@@ -3,5 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    # path('', views.Custom.),
+    # path('', views.top_menu, name='top_menu'),
+    # path('', views.initial_settings, name='initial_settings'),
+    path('', views.custom_list(), name='custom_list'),
 ]
