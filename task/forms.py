@@ -3,8 +3,6 @@ from .models import Custom
 
 
 class CustomForm(forms.ModelForm):
-
-
-    class meta:
+    class Meta:
         model = Custom
-    fields = ('title', 'start_time', 'end_time')
+        fields = ('title', 'start_time', 'end_time')
