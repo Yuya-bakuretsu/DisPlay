@@ -2,6 +2,16 @@
 body{
   background:linear-gradient(15deg, #F4F6FC, #E1E8F0);
   text-align: center;
+  background-repeat: no-repeat;
+  height: 812px;
+  width: 375px;
+  margin: 0 auto 0 auto;
+}
+h1{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.2em;
 }
 .Landscape_button{
   color: #A0A0A0;
