@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Hello World！</h1>
+{% extends 'task/base.html' %}
 
-</body>
-</html>
+{% block content%}
+{% for custom in customs %}
+<div class="post">
+    <h2><a href="{% url 'custom_detail' pk=custom.pk %}">{{ custom.title }} {{ custom.start_time }} ~ {{ custom.end_time }}</a></h2>
+</div>
+{% endfor %}
+{% endblock%}
