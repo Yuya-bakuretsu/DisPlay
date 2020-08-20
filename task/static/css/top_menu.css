@@ -1,0 +1,17 @@
+header{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 38px;
+}
+h1{
+  margin: 0 0 0 auto;
+}
+.Option_link{
+  margin-left: 91px;
+  margin-right: 21px;
+}
+.clock{
+  width: 307;
+  height: 307;
+}
