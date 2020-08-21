@@ -3,6 +3,8 @@ from django.utils import timezone
 from .models import Custom
 from django.contrib.auth.decorators import login_required
 from .forms import CustomForm
+from django.views import generic
+from django.urls import reverse_lazy
 
 
 def custom_list(request):
@@ -27,3 +29,15 @@ def custom_add(request):
     else:
         form = CustomForm()
     return render(request, 'task/custom_edit.html', {'form': form})
+
+
+class TimeSchedule(generic.CreateView):
+    model = Custom
+    form_class = CustomForm
+    success_url = reverse_lazy('task:custom_add')
+    template_name = 'task/custom_add.html'
+
+    def get_context_data(self, *args, **kwargs):
+        schedules = Custom.objects.order_by('start_time')
+        context = super().get_context_data(*args, **kwargs)
+        return context
