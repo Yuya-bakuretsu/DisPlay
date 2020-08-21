@@ -1,5 +1,3 @@
-import datetime
-
 class TimeScheduleBS4:
 
     def __init__(
@@ -24,18 +22,51 @@ class TimeScheduleBS4:
         self.max_height = self.hour_height * len(self.hours)
         self.schedule_color = schedule_color
 
-        def convert(self, obj):
-            """(開始時間、終了時間、スケジュールテキスト)のタプルを返す.
-            format_schedueメソッドに渡した各scheduleオブジェクトを
-            (開始時間, 終了時間,テキスト)の形に変換するためのメソッド
-            return obj.start, obj.end, obj.text
-            return obj['start'], obj['end'], obj['title']+obj['text']
-            のようにしてください
-            """
-            message = '{}~{}<br>{}'.format(
-                obj.start_time, obj.end_time, obj.title
-            )
-            return obj.start_time, obj.end_time, message
+    def convert(self, obj):
+        """(開始時間、終了時間、スケジュールテキスト)のタプルを返す.
+        format_schedueメソッドに渡した各scheduleオブジェクトを
+        (開始時間, 終了時間,テキスト)の形に変換するためのメソッド
+        return obj.start, obj.end, obj.text
+        return obj['start'], obj['end'], obj['title']+obj['text']
+        のようにしてください
+        """
+        message = '{}~{}<br>{}'.format(
+            obj.start_time, obj.end_time, obj.title
+        )
+        return obj.start_time, obj.end_time, message
 
-        def format_hour_name(self, hour):
-            div = 'div style="height:{0}px;" class="hour-name">{1}:00</div>'
+    def format_hour_name(self, hour):
+        div = 'div style="height:{0}px;" class="hour-name">{1}:00</div>'
+        return div.format(self.hour_height, hour)
+
+    def format_minute(self, schedule, now):
+        start, end, text = self.convert(schedule)
+        context = {
+            'color': self.schedule.color,
+            'height': self.minute_height * self.step,
+            'just-hour': '',
+            'text': text,
+        }
+        if now.minute == 0:
+            context['just-hour'] = 'just-hour'
+
+        if start <= now < end:
+            if self.already_tooltip:
+                base_html = (
+                    '<div class="{color} {just-hour}" '
+                    'style="height:{height}px;"></div>'
+                )
+            else:
+                base_html = (
+                    '<div class="{color} {just-hour}" '
+                    'style="height:{height}px;" '
+                    'data-html="true" title="{text}" data-placement="top" '
+                    'data-trigger="manual" data-toggle="tooltip"></div>'
+                )
+
+        else:
+            base_html = (
+                '<div class="{just-hour}" style="height:{height}px;"></div>'
+            )
+
+        return base_html.format(**context)
