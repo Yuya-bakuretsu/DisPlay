@@ -8,5 +8,5 @@ urlpatterns = [
     path('', views.custom_list, name='custom_list'),
     path('add_custom/', views.custom_add, name='custom_add'),
     path('custom/<int:pk>/', views.custom_detail, name='custom_detail'),
-    # path('add_custom/', views.TimeSchedule.as_view(), name='custom_add'),
+    path('add_custom/', views.TimeSchedule.as_view(), name='custom_add'),
 ]
