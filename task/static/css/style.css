@@ -3,7 +3,7 @@ body{
   background:linear-gradient(15deg, #F4F6FC, #E1E8F0);
   text-align: center;
   background-repeat: no-repeat;
-  height: 812px;
+  min-height: 812px;
   width: 375px;
   margin: 0 auto 0 auto;
   font-family: 'Roboto', sans-serif;
@@ -14,6 +14,7 @@ h1{
   letter-spacing: 0.2em;
 }
 h3{
+  font-family: 'Roboto', sans-serif;
   font-weight: 300;
   font-size: 17px;
   letter-spacing: 0.15em;
@@ -40,7 +41,9 @@ p{
   font-weight: 300;
 }
 button{
+  font-family: 'Roboto', sans-serif;
   color: #A0A0A0;
+  font-weight: 300;
   box-shadow:
   1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
   -1.5px -1.5px 3px rgba(248, 253, 255, 0.9),
@@ -56,7 +59,7 @@ button:active{
   inset -1px -1.5px 3px rgba(248, 253, 255, 0.9);
 }
 .Login.Landscape_button{
-  background:linear-gradient(30deg,#65B2FF, #5392DB);
+  background:linear-gradient(45deg,#65B2FF, #5F9BE0);
   width: 103px;
   height: 29px;
   color: #ffffff;
