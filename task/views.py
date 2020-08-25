@@ -59,6 +59,6 @@ class TimeSchedule(generic.CreateView):
             int(form.cleaned_data['end_hour']),
             int(form.cleaned_data['end_minute'])
         )
-        schedule.author = self.user
+        schedule.author = self.request.user
         self.object = schedule.save()
         return redirect(custom_list)
