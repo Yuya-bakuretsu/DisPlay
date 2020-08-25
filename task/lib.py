@@ -1,3 +1,6 @@
+import datetime
+
+
 class TimeScheduleBS4:
 
     def __init__(
@@ -57,6 +60,7 @@ class TimeScheduleBS4:
                     'style="height:{height}px;"></div>'
                 )
             else:
+                self.already_tooltip = True
                 base_html = (
                     '<div class="{color} {just-hour}" '
                     'style="height:{height}px;" '
@@ -70,3 +74,27 @@ class TimeScheduleBS4:
             )
 
         return base_html.format(**context)
+
+    def format_schedule(self, schedules):
+        v = []
+        a = v.append
+        a('<div class="row no-gutters">')
+
+        a('div class="col" style="height:{0}px;">'.format(self.max_height))
+        for hour in self.hours:
+            a(self.format_hour_name(hour))
+            a('</div>')
+
+        # 予定の最初のdivタグにtooltipを導入するためのフラグ
+        for schedule in schedules:
+            self.already_tooltip = False
+            a('<div class="col minute-wrapper" style="height:{0}px;">'.format(self.max_height))
+            for hour in self.hours:
+                for minute in range(0, 60, self.step):
+                    now = datetime.time(hour=hour, minute=minute)
+                    a(self.format_minute(schedule, now))
+                a('</div>')
+
+            a('</div>')
+
+            return ''.join(v)
