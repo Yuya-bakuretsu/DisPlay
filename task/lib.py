@@ -33,19 +33,19 @@ class TimeScheduleBS4:
         return obj['start'], obj['end'], obj['title']+obj['text']
         のようにしてください
         """
-        message = '{}~{}<br>{}'.format(
+        message = '{}～{}<br>{}'.format(
             obj.start_time, obj.end_time, obj.title
         )
         return obj.start_time, obj.end_time, message
 
     def format_hour_name(self, hour):
-        div = 'div style="height:{0}px;" class="hour-name">{1}:00</div>'
+        div = '<div style="height:{0}px;" class="hour-name">{1}:00</div>'
         return div.format(self.hour_height, hour)
 
     def format_minute(self, schedule, now):
         start, end, text = self.convert(schedule)
         context = {
-            'color': self.schedule.color,
+            'color': self.schedule_color,
             'height': self.minute_height * self.step,
             'just-hour': '',
             'text': text,
@@ -65,7 +65,8 @@ class TimeScheduleBS4:
                     '<div class="{color} {just-hour}" '
                     'style="height:{height}px;" '
                     'data-html="true" title="{text}" data-placement="top" '
-                    'data-trigger="manual" data-toggle="tooltip"></div>'
+                    'data-trigger="manual"  data-toggle="tooltip">'
+                    '</div>'
                 )
 
         else:
@@ -80,10 +81,10 @@ class TimeScheduleBS4:
         a = v.append
         a('<div class="row no-gutters">')
 
-        a('div class="col" style="height:{0}px;">'.format(self.max_height))
+        a('<div class="col" style="height:{0}px;">'.format(self.max_height))
         for hour in self.hours:
             a(self.format_hour_name(hour))
-            a('</div>')
+        a('</div>')
 
         # 予定の最初のdivタグにtooltipを導入するためのフラグ
         for schedule in schedules:
@@ -93,8 +94,8 @@ class TimeScheduleBS4:
                 for minute in range(0, 60, self.step):
                     now = datetime.time(hour=hour, minute=minute)
                     a(self.format_minute(schedule, now))
-                a('</div>')
-
             a('</div>')
 
-            return ''.join(v)
+        a('</div>')
+
+        return ''.join(v)
