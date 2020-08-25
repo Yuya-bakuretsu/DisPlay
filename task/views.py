@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from .forms import CustomForm
 from django.views import generic
 from django.urls import reverse_lazy
+from .lib import TimeScheduleBS4
+from django.utils.safestring import mark_safe
+import datetime
 
 
 def custom_list(request):
@@ -39,5 +42,23 @@ class TimeSchedule(generic.CreateView):
 
     def get_context_data(self, *args, **kwargs):
         schedules = Custom.objects.order_by('start_time')
+        time_schedule = TimeScheduleBS4(step=10, minute_height=0.5)
         context = super().get_context_data(*args, **kwargs)
+        context['time_schedule'] = mark_safe(
+            time_schedule.format_schedule(schedules)
+        )
         return context
+
+    def form_valid(self, form):
+        schedule = form.save(commit=False)
+        schedule.start_time = datetime.time(
+            int(form.cleaned_data['start_hour']),
+            int(form.cleaned_data['start_minute'])
+        )
+        schedule.end_time = datetime.time(
+            int(form.cleaned_data['end_hour']),
+            int(form.cleaned_data['end_minute'])
+        )
+        schedule.author = self.request.user
+        self.object = schedule.save()
+        return redirect(custom_list)
