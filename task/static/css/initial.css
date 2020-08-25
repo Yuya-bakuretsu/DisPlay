@@ -1,0 +1,62 @@
+h1{
+  padding: 50px 0 0 0;
+}
+p.subtitle{
+  margin: 30px 0 0 0;
+}
+p{
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #2C2C2C;
+}
+a{
+  text-decoration: none;
+  color: #6AB2FA;
+}
+.custom_edit1{
+  margin: 20px auto 0 auto;
+  width: 329px;
+  min-height: 681px;
+  background: linear-gradient(30deg,#FDFDFD, #FCFCFC);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 
+  3px 3px 9px 0 rgba(0, 0, 0, 0.1),
+  -3px -3px 9px 0 rgba(248, 253, 255, 0.6);
+}
+p.custom_subtitle{
+  padding: 8px 0 0 0;
+}
+h3{
+  font-size: 15px;
+  color: #2C2C2C;
+}
+h3.custom_title{
+  padding: 26px 0 0 0;
+}
+.custom_wrapper{
+  text-align: left;
+}
+.custom_list{
+  margin: 25px 0 25px 0;
+}
+.custom{
+  display: flex;
+  margin: 0 0 0 22.5px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+img.Pen{
+  margin: 0 0 0 6px;
+}
+img.Trashcan{
+  width: 13.24px;
+  height: 17.97px;
+  margin: 0 0 0 212px;
+  align-self: center;
+}
+p.custom_time{
+  margin: 7px 0 0 0;
+}
+button{
+  margin: 0 0 0 23px;
+}
