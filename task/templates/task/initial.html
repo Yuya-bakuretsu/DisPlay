@@ -11,22 +11,46 @@
 </head>
 
 <body>
-  <h1>Setting</h1>
-  <p class="subtitle">情報は<a href="">プライバシーポリシー</a>に則って管理されます</p>
-  <div class="custom_edit1">
-    <h3 class="custom_title">習慣を登録してください</h3>
-    <p class="cutom_subtitle">(睡眠、仕事、読書など)</p>
-    <div class="custom_wrapper">
-      <div class="custom_list">
-        <div class="custom">
-          <h3>朝食</h3><img class="Pen" src="../../static/image/pen.svg" alt="Pen"><img class="Trashcan"
-            src="../../static/image/Trashcan.svg" alt="Trashcan">
-          <p class="custom_time">毎日 7:00~7:30</p>
-        </div>
-      </div>
-      <button class="Landscape_button Login">Add</button>
+  <div class="Initial Visible" id="Initial-js">
+    <h1>Display</h1>
+    <div class="Initial_box">
+      <h1>Setting</h1>
+      <h3>Displayを使用するために<br>習慣とスケジュールを<br>設定しましょう</h3>
+      <h4>所要時間:約5分</h4>
+      <button class="Landscape_button Login Start" id="Start-js">Start</button>
     </div>
   </div>
+  <div class="Setting" id="Setting-js">
+    <h1>Setting</h1>
+    <p class="subtitle">情報は<a href="">プライバシーポリシー</a>に則って管理されます</p>
+    <div class="custom_edit1">
+      <h3 class="custom_title">習慣を登録してください</h3>
+      <p class="cutom_subtitle">(睡眠、仕事、読書など)</p>
+      <div class="custom_wrapper">
+        <div class="custom_list">
+          <div class="custom">
+            <h3>朝食</h3><img class="Pen" src="../../static/image/pen.svg" alt="Pen"><img class="Trashcan"
+              src="../../static/image/Trashcan.svg" alt="Trashcan">
+            <p>毎日 7:00~7:30</p>
+          </div>
+          <div class="custom">
+            <h3>昼食</h3><img class="Pen" src="../../static/image/pen.svg" alt="Pen"><img class="Trashcan"
+              src="../../static/image/Trashcan.svg" alt="Trashcan">
+            <p>毎日 12:00~12:30</p>
+          </div>
+          <div class="custom">
+            <h3>夕食</h3><img class="Pen" src="../../static/image/pen.svg" alt="Pen"><img class="Trashcan"
+              src="../../static/image/Trashcan.svg" alt="Trashcan">
+            <p>毎日 19:00~19:30</p>
+          </div>
+        </div>
+        <button class="Landscape_button Login Add">Add</button>
+      </div>
+      <div class="Next_wrapper">
+        <button class="Landscape_button Login" id="Next-js">Next</button></div>
+    </div>
+  </div>
+  <script src="../../static/js/initial.js"></script>
 </body>
 
 </html>
