@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Custom
+from .models import Custom, Todo
 from django.contrib.auth.decorators import login_required
-from .forms import CustomForm
-from django.views import generic
+from .forms import CustomForm, TodoForm
+from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from .lib import TimeScheduleBS4
 from django.utils.safestring import mark_safe
 import datetime
+from django.contrib import messages
 
 
 def custom_list(request):
@@ -34,7 +35,7 @@ def custom_add(request):
     return render(request, 'task/custom_edit.html', {'form': form})
 
 
-class TimeSchedule(generic.CreateView):
+class TimeSchedule(CreateView):
     model = Custom
     form_class = CustomForm
     success_url = reverse_lazy('task:custom_add')
@@ -62,3 +63,34 @@ class TimeSchedule(generic.CreateView):
         schedule.author = self.request.user
         self.object = schedule.save()
         return redirect(custom_list)
+
+
+class TodoListView(ListView):
+    model = Todo
+    paginate_by = 10
+
+
+class TodoAddView(CreateView):
+    model = Todo
+    form_class = TodoForm
+    success_url = reverse_lazy('task:todo_list')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(
+            self.request, '「{}」を作成しました'.format(form.instance)
+        )
+        return result
+
+
+class TodoDeleteView(DeleteView):
+    model = Todo
+    form_class = TodoForm
+    success_url = reverse_lazy('todo_list')
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+        messages.success(
+          self.request, '「{}」を削除しました'.format(self.object)
+        )
+        return result
