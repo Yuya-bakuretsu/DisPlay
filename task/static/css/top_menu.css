@@ -7,11 +7,44 @@ header{
 h1{
   margin: 0 0 0 auto;
 }
+.Todo_menu{
+  margin: 55px 0 0 0;
+  display: flex;
+}
+h3{
+  margin: 0 0 0 38px;
+  text-align: left;
+}
+.Landscape_button{
+  margin: 0 0 0 143px;
+}
+.Trashcan{
+  margin: 0 0 0 12px;
+}
+.Task_list{
+  margin: 6px 0 0 0;
+}
+.Task{
+  display: flex;
+  margin: 25px 0 0 38px;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+h4{
+  width: 163px;
+  text-align: left;
+}
+.Play{
+  margin: 0 0 0 63px;
+}
+.Check{
+  margin: 0 0 0 15px;
+}
+p{
+  margin: -8px 0 0 4px;
+  text-align: left;
+}
 .Option_link{
   margin-left: 91px;
   margin-right: 21px;
-}
-.clock{
-  width: 307;
-  height: 307;
 }

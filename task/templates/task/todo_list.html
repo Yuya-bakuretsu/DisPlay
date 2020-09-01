@@ -1,0 +1,22 @@
+{% extends 'task/base.html' %}
+{% load static %}
+{% block content%}
+<header>
+    <h1>DisPlay</h1><a class="Option_link" href=""><img src="{% static 'image/gear.svg'%}" alt="Option"></a>
+</header>
+<img class="clock" src="{% static 'image/Circle.svg'%}" alt="Clock">
+<div class="Todo_menu">
+    <h3>Todolist</h3><button class="Landscape_button">
+    <div class="button_text">Add</div></button><img class="Trashcan" src="{% static 'image/Trashcan.svg'%}" alt="trashcan">
+</div>
+<div class="Task_list">
+    {% for todo in object_list %}
+    <div class="Task">
+        <h4>{{ todo.title }}</h4>
+        <button class="Circle_button Play"><img class="Play_img" src="{% static 'image/play.svg'%}" alt="Play"></button><button
+            class="Circle_button Check"><img src="{% static 'image/check.svg'%}" alt="check"></button>
+        <p>Deadline {{todo.deadline_time}}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock%}
