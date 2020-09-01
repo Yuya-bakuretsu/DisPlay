@@ -15,7 +15,7 @@
         <h4>{{ todo.title }}</h4>
         <button class="Circle_button Play"><img class="Play_img" src="{% static 'image/play.svg'%}" alt="Play"></button><button
             class="Circle_button Check"><img src="{% static 'image/check.svg'%}" alt="check"></button>
-        <p>Deadline {{todo.end_time}}</p>
+        <p>Deadline {{todo.deadline_time}}</p>
     </div>
     {% endfor %}
 </div>

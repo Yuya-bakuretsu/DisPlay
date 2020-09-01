@@ -81,3 +81,16 @@ class TodoAddView(CreateView):
             self.request, '「{}」を作成しました'.format(form.instance)
         )
         return result
+
+
+class TodoDeleteView(DeleteView):
+    model = Todo
+    form_class = TodoForm
+    success_url = reverse_lazy('todo_list')
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+        messages.success(
+          self.request, '「{}」を削除しました'.format(self.object)
+        )
+        return result

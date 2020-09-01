@@ -10,5 +10,6 @@ urlpatterns = [
     path('custom/<int:pk>/', views.custom_detail, name='custom_detail'),
     path('add_custom/', views.TimeSchedule.as_view(), name='custom_add'),
     path('todo_list/', views.TodoListView.as_view(), name='todo_list'),
-    path('todo_add/', views.TodoAddView.as_view(), name='todo_add')
+    path('todo_add/', views.TodoAddView.as_view(), name='todo_add'),
+    path('todo_list/', views.TodoDeleteView.as_view(), name='todo_delete'),
 ]
