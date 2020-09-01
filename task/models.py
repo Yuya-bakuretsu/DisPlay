@@ -19,3 +19,4 @@ class Todo(models.Model):
     title = models.CharField(max_length=200)
     start_time = models.TimeField('開始時間', blank=True, null=True)
     end_time = models.TimeField('終了時間', blank=True, null=True)
+    deadline_time = models.DateTimeField('締切日', default=timezone.now)

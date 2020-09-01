@@ -1,5 +1,5 @@
 from django import forms
-from .models import Custom
+from .models import Custom, Todo
 import datetime
 
 HOURS = [(x, x) for x in range(0, 24)]
@@ -35,3 +35,9 @@ class CustomForm(forms.ModelForm):
                 '終了時間は、開始時間よりも後にしてください'
             )
         return self.cleaned_data['end_minute']
+
+
+class TodoForm:
+    class Meta:
+        model = Todo
+        fields = ('title', 'deadline_time',)
