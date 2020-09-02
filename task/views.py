@@ -11,10 +11,8 @@ import datetime
 from django.contrib import messages
 
 
-def custom_list(request):
-    me = request.user
-    customs = Custom.objects.filter(author=me).order_by('start_time')
-    return render(request, 'task/custom_list.html', {'customs': customs})
+class CustomListView(ListView):
+    model = Custom
 
 
 def custom_detail(request, pk):
@@ -85,6 +83,7 @@ class TodoAddView(CreateView):
 
 class TodoDetailView(DetailView):
     model = Todo
+
 
 class TodoDeleteView(DeleteView):
     model = Todo
