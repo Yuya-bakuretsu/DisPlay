@@ -83,6 +83,9 @@ class TodoAddView(CreateView):
         return result
 
 
+class TodoDetailView(DetailView):
+    model = Todo
+
 class TodoDeleteView(DeleteView):
     model = Todo
     form_class = TodoForm

@@ -12,7 +12,8 @@
 <div class="Task_list">
     {% for todo in object_list %}
     <div class="Task">
-        <h4>{{ todo.title }}</h4>
+        <a href="{% url 'todo_detail' todo.pk %}">
+        <h4>{{ todo.title }}</h4></a>
         <button class="Circle_button Play"><img class="Play_img" src="{% static 'image/play.svg'%}" alt="Play"></button><button
             class="Circle_button Check"><img src="{% static 'image/check.svg'%}" alt="check"></button>
         <p>Deadline {{todo.deadline_time}}</p>
