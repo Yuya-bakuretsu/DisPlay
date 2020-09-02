@@ -21,7 +21,7 @@
         <p class="cutom_subtitle">(睡眠、仕事、読書など)</p>
         <div class="custom_wrapper">
             <div class="custom_list">
-                {% for custom in customs %}
+                {% for custom in object_list %}
                 <div class="custom">
                     <h3><a href="{% url 'custom_detail' pk=custom.pk %}">{{ custom.title }}</a></h3>
                     <img class="Pen" src="{% static 'image/pen.svg' %}" alt="Pen"><img class="Trashcan" src="{% static 'image/Trashcan.svg' %}" alt="Trashcan">
@@ -37,5 +37,5 @@
 </div>
 {% endblock%}
 {% block extrajs %}
-<script src="../../static/js/initial.js"></script>
+<script src="{% static 'js/initial.js'%}"></script>
 {% endblock %}
