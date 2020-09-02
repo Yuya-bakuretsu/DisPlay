@@ -1,5 +1,8 @@
 {% extends 'task/base.html' %}
 {% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'css/top_menu.css'%}">
+{% endblock %}
 {% block content%}
 <header>
     <h1>DisPlay</h1><a class="Option_link" href=""><img src="{% static 'image/gear.svg'%}" alt="Option"></a>
