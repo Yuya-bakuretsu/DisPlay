@@ -13,8 +13,8 @@
     {% for todo in object_list %}
     <div class="Task">
         <h4>{{ todo.title }}</h4>
-        <button class="Circle_button Play"><img class="Play_img" src="{% static 'image/play.svg'%}" alt="Play"></button><button
-            class="Circle_button Check"><img src="{% static 'image/check.svg'%}" alt="check"></button>
+        <button class="Circle_button Play"><img class="Play_img" src="{% static 'image/play.svg'%}" alt="Play"></button>
+        <a href="{% url 'todo_delete' todo.pk %}"><button class="Circle_button Check"><img src="{% static 'image/check.svg'%}" alt="check"></button></a>
         <p>Deadline {{todo.deadline_time}}</p>
     </div>
     {% endfor %}
