@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content%}
 <header>
-    <h1>DisPlay</h1><a class="Option_link" href=""><img src="{% static 'image/gear.svg'%}" alt="Option"></a>
+    <h1>DisPlay</h1><a class="Option_link" href="{% url 'custom_list' %}"><img src="{% static 'image/gear.svg'%}" alt="Option"></a>
 </header>
 <img class="clock" src="{% static 'image/Circle.svg'%}" alt="Clock">
 <div class="Todo_menu">

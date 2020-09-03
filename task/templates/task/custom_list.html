@@ -1,6 +1,7 @@
 {% extends 'task/base.html' %}
 {% load static %}
 {% block extracss %}
+{% load bootstrap4 %}
 <link rel="stylesheet" href="{% static 'css/initial.css'%}">
 {% endblock %}
 {% block content%}
@@ -24,7 +25,8 @@
                 {% for custom in object_list %}
                 <div class="custom">
                     <h3><a href="{% url 'custom_detail' pk=custom.pk %}">{{ custom.title }}</a></h3>
-                    <img class="Pen" src="{% static 'image/pen.svg' %}" alt="Pen"><img class="Trashcan" src="{% static 'image/Trashcan.svg' %}" alt="Trashcan">
+                    <img class="Pen" src="{% static 'image/pen.svg' %}" alt="Pen"><a
+                        href="{% url 'custom_delete' custom.pk %}"><i class="fas fa-trash"></i></a>
                     <p>{{ custom.start_time }} ~ {{ custom.end_time }}</p>
                 </div>
                 {% endfor %}
@@ -32,7 +34,8 @@
             <button class="Landscape_button Login Add">Add</button>
         </div>
         <div class="Next_wrapper">
-            <button class="Landscape_button Login" id="Next-js">Next</button></div>
+            <button class="Landscape_button Login" id="Next-js">Next</button>
+        </div>
     </div>
 </div>
 {% endblock%}
