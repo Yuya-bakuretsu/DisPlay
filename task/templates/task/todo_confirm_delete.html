@@ -2,10 +2,15 @@
 {% block meta_title %}削除確認{% endblock %}
 {% block page_title %}削除確認{% endblock %}
 {% block content %}
-<p>{{ object }}を削除します</p>
-<form method="post">
-    <button>削除</button>
-    {% csrf_token %}
-</form>
-
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ object }}を削除します</h1>
+        <form method="post">
+          <button class="btn btn-danger">削除する</button>
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}

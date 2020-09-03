@@ -59,8 +59,8 @@ class TimeSchedule(CreateView):
             int(form.cleaned_data['end_minute'])
         )
         schedule.author = self.request.user
-        self.object = schedule.save()
-        return redirect(custom_list)
+        schedule.save()
+        return redirect('custom_list')
 
 
 class TodoListView(ListView):
@@ -71,9 +71,13 @@ class TodoListView(ListView):
 class TodoAddView(CreateView):
     model = Todo
     form_class = TodoForm
-    success_url = reverse_lazy('task:todo_list')
+    template_name = 'task/todo_add.html'
+    success_url = reverse_lazy('todo_list')
 
     def form_valid(self, form):
+        todo = form.save(commit=False)
+        todo.author = self.request.user
+        todo.save()
         result = super().form_valid(form)
         messages.success(
             self.request, '「{}」を作成しました'.format(form.instance)

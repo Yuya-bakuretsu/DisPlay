@@ -1,1 +1,11 @@
 {% extends 'task/base.html' %}
+{% block meta_title%}{% if object.pk %}{{ object.title }}{% else %}新規作成{% endif %}{% endblock %}
+{% block page_title%}{% if object.pk %}{{ object.title }}{% else %}新規作成{% endif %}{% endblock %}
+{% load bootstrap4 %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+{% endblock%}

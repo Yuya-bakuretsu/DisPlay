@@ -37,7 +37,7 @@ class CustomForm(forms.ModelForm):
         return self.cleaned_data['end_minute']
 
 
-class TodoForm:
+class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
         fields = ('title', 'deadline_time',)
