@@ -20,19 +20,6 @@ def custom_detail(request, pk):
     return render(request, 'task/custom_detail.html', {'custom': custom})
 
 
-def custom_add(request):
-    if request.method == "POST":
-        form = CustomForm(request.POST)
-        if form.is_valid():
-            custom = form.save(commit=False)
-            custom.author = request.user
-            custom.save()
-            return redirect('custom_detail', pk=custom.pk)
-    else:
-        form = CustomForm()
-    return render(request, 'task/custom_edit.html', {'form': form})
-
-
 class TimeSchedule(CreateView):
     model = Custom
     form_class = CustomForm
@@ -61,6 +48,32 @@ class TimeSchedule(CreateView):
         schedule.author = self.request.user
         schedule.save()
         return redirect('custom_list')
+
+
+class CustomUpdateView(UpdateView):
+    model = Custom
+    form_class = CustomForm
+    success_url = reverse_lazy('custom_list')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(
+            self.request, '「{}」を更新しました'.format(self.object)
+        )
+        return result
+
+
+class CustomDeleteView(DeleteView):
+    model = Custom
+    form_class = CustomForm
+    success_url = reverse_lazy('custom_list')
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(self, *args, **kwargs)
+        messages.success(
+          self.request, '「{}」を削除しました'.format(self.object)
+        )
+        return result
 
 
 class TodoListView(ListView):
