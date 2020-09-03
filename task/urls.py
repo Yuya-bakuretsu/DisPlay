@@ -9,6 +9,7 @@ urlpatterns = [
     # path('add_custom/', views.custom_add, name='custom_add'),
     path('custom/<int:pk>/', views.custom_detail, name='custom_detail'),
     path('add_custom/', views.TimeSchedule.as_view(), name='custom_add'),
+    path('custom_update/<int:pk>', views.CustomUpdateView.as_view(), name='custom_update'),
     path('custom_delete/<int:pk>', views.CustomDeleteView.as_view(), name='custom_delete'),
     path('', views.TodoListView.as_view(), name='todo_list'),
     path('todo_add/', views.TodoAddView.as_view(), name='todo_add'),

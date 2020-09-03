@@ -50,6 +50,19 @@ class TimeSchedule(CreateView):
         return redirect('custom_list')
 
 
+class CustomUpdateView(UpdateView):
+    model = Custom
+    form_class = CustomForm
+    success_url = reverse_lazy('custom_list')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(
+            self.request, '「{}」を更新しました'.format(self.object)
+        )
+        return result
+
+
 class CustomDeleteView(DeleteView):
     model = Custom
     form_class = CustomForm

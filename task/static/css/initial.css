@@ -32,7 +32,7 @@
   height: 359px;
   background: linear-gradient(30deg,#FDFDFD, #FCFCFC);
   border-radius: 16px;
-  box-shadow: 
+  box-shadow:
   3px 3px 9px 0 rgba(0, 0, 0, 0.1),
   -3px -3px 9px 0 rgba(248, 253, 255, 0.6);
 }
@@ -85,7 +85,7 @@ a{
   min-height: 681px;
   background: linear-gradient(30deg,#FDFDFD, #FCFCFC);
   border-radius: 16px 16px 0 0;
-  box-shadow: 
+  box-shadow:
   3px 3px 9px 0 rgba(0, 0, 0, 0.1),
   -3px -3px 9px 0 rgba(248, 253, 255, 0.6);
 }
