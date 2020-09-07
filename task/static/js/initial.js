@@ -4,5 +4,6 @@ let start = document.getElementById('Start-js')
 let next = document.getElementById('Next-js')
 start.onclick = function StartTransition(){
   initial.classList.remove('Visible');
+  initial.remove()
   setting.classList.add('Visible')
 }
