@@ -40,4 +40,4 @@ class CustomForm(forms.ModelForm):
 class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ('title', 'deadline_time',)
+        fields = ('title', 'deadline_time', 'start_time', 'end_time',)

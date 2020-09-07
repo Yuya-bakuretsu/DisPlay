@@ -54,6 +54,7 @@ class CustomUpdateView(UpdateView):
     model = Custom
     form_class = CustomForm
     success_url = reverse_lazy('custom_list')
+    template_name = "task/custom_edit.html"
 
     def form_valid(self, form):
         result = super().form_valid(form)
@@ -100,6 +101,20 @@ class TodoAddView(CreateView):
 
 class TodoDetailView(DetailView):
     model = Todo
+
+
+class TodoUpdateView(UpdateView):
+    model = Todo
+    form_class = TodoForm
+    success_url = reverse_lazy('todo_list')
+    template_name = "task/todo_edit.html"
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(
+            self.request, '「{}」を更新しました'.format(self.object)
+        )
+        return result
 
 
 class TodoDeleteView(DeleteView):
