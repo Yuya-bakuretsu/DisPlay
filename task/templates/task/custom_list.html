@@ -1,41 +1,56 @@
 {% extends 'task/base.html' %}
 {% load static %}
 {% block extracss %}
+{% load bootstrap4 %}
 <link rel="stylesheet" href="{% static 'css/initial.css'%}">
 {% endblock %}
 {% block content%}
-<div class="Initial Visible" id="Initial-js">
-    <h1>Display</h1>
-    <div class="Initial_box">
-        <h1>Setting</h1>
-        <h3>Displayを使用するために<br>習慣とスケジュールを<br>設定しましょう</h3>
-        <h4>所要時間:約5分</h4>
-        <button class="Landscape_button Login Start" id="Start-js">Start</button>
-    </div>
-</div>
-<div class="Setting" id="Setting-js">
-    <h1>Setting</h1>
-    <p class="subtitle">情報は<a href="">プライバシーポリシー</a>に則って管理されます</p>
-    <div class="custom_edit1">
-        <h3 class="custom_title">習慣を登録してください</h3>
-        <p class="cutom_subtitle">(睡眠、仕事、読書など)</p>
-        <div class="custom_wrapper">
-            <div class="custom_list">
-                {% for custom in customs %}
-                <div class="custom">
-                    <h3><a href="{% url 'custom_detail' pk=custom.pk %}">{{ custom.title }}</a></h3>
-                    <img class="Pen" src="{% static 'image/pen.svg' %}" alt="Pen"><img class="Trashcan" src="{% static 'image/Trashcan.svg' %}" alt="Trashcan">
-                    <p>{{ custom.start_time }} ~ {{ custom.end_time }}</p>
-                </div>
-                {% endfor %}
-            </div>
-            <button class="Landscape_button Login Add">Add</button>
+<div class="Initial_wrapper">
+    <div class="Initial Visible" id="Initial-js">
+        <h1>Display</h1>
+        <div class="Initial_box">
+            <h1>Setting</h1>
+            <h3>Displayを使用するために<br>習慣とスケジュールを<br>設定しましょう</h3>
+            <h4>所要時間:約5分</h4>
+            <button class="Landscape_button Login Start" id="Start-js">Start</button>
         </div>
-        <div class="Next_wrapper">
-            <button class="Landscape_button Login" id="Next-js">Next</button></div>
+    </div>
+    <div class="Setting" id="Setting-js">
+        <h1>Setting</h1>
+        <p class="subtitle">情報は<a href="">プライバシーポリシー</a>に則って管理されます</p>
+        <div class="custom_edit1">
+            <h3 class="custom_title">習慣を登録してください</h3>
+            <p class="custom_subtitle">(睡眠、仕事、読書など)</p>
+            <div class="custom_wrapper">
+                <div class="custom_list">
+                    {% for custom in object_list %}
+                    <div class="custom">
+                        <h3><a href="{% url 'custom_detail' pk=custom.pk %}">
+                            {{ custom.title }}</a>
+                            <a href="{% url 'custom_edit' pk=custom.pk %}">
+                                <img class="Pen"
+                                     src="{% static 'image/pen.svg' %}"
+                                     alt="pen"></img></a>
+                        </h3>
+                        <a href="{% url 'custom_delete' custom.pk %}">
+                            <img class="Trashcan"
+                                 src="{% static 'image/Trashcan.svg' %}"
+                                 alt="Trashcan"></img></a>
+                    </div>
+                    <p>{{ custom.start_time }} ~ {{ custom.end_time }}</p>
+                    {% endfor %}
+                </div>
+                <a href="{% url 'custom_add' %}" class="nav-link">
+                    <button class="Landscape_button Login Add">Add</button>
+                </a>
+            </div>
+            <div class="Next_wrapper">
+                <button class="Landscape_button Login" id="Next-js">Next</button>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock%}
 {% block extrajs %}
-<script src="../../static/js/initial.js"></script>
+<script src="{% static 'js/initial.js'%}"></script>
 {% endblock %}

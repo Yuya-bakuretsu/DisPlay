@@ -5,20 +5,31 @@
 {% endblock %}
 {% block content%}
 <header>
-    <h1>DisPlay</h1><a class="Option_link" href=""><img src="{% static 'image/gear.svg'%}" alt="Option"></a>
+    <h1>DisPlay</h1><a class="Option_link" href="{% url 'custom_list' %}"><img src="{% static 'image/gear.svg'%}"
+                                                                               alt="Option"></a>
 </header>
 <img class="clock" src="{% static 'image/Circle.svg'%}" alt="Clock">
 <div class="Todo_menu">
-    <h3>Todolist</h3><button class="Landscape_button">
-    <div class="button_text">Add</div></button><img class="Trashcan" src="{% static 'image/Trashcan.svg'%}" alt="trashcan">
+    <h3>Todolist</h3>
+    <a href="{% url 'todo_add' %}">
+        <button class="Landscape_button">
+            <div class="button_text">Add</div>
+        </button>
+    </a>
+    <img class="Trashcan" src="{% static 'image/Trashcan.svg'%}" alt="trashcan">
 </div>
 <div class="Task_list">
     {% for todo in object_list %}
     <div class="Task">
         <a href="{% url 'todo_detail' todo.pk %}">
-        <h4>{{ todo.title }}</h4></a>
-        <button class="Circle_button Play"><img class="Play_img" src="{% static 'image/play.svg'%}" alt="Play"></button>
-        <a href="{% url 'todo_delete' todo.pk %}"><button class="Circle_button Check"><img src="{% static 'image/check.svg'%}" alt="check"></button></a>
+            <h4>{{ todo.title }}</h4></a>
+        <a href="{% url 'todo_edit' todo.pk %}">
+            <button class="Circle_button Play"><img class="Play_img" src="{% static 'image/play.svg'%}" alt="Play">
+            </button>
+        </a>
+        <a href="{% url 'todo_delete' todo.pk %}">
+            <button class="Circle_button Check"><img src="{% static 'image/check.svg'%}" alt="check"></button>
+        </a>
         <p>Deadline {{todo.deadline_time}}</p>
     </div>
     {% endfor %}

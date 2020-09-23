@@ -11,28 +11,13 @@ import datetime
 from django.contrib import messages
 
 
-def custom_list(request):
-    me = request.user
-    customs = Custom.objects.filter(author=me).order_by('start_time')
-    return render(request, 'task/custom_list.html', {'customs': customs})
+class CustomListView(ListView):
+    model = Custom
 
 
 def custom_detail(request, pk):
     custom = get_object_or_404(Custom, pk=pk)
     return render(request, 'task/custom_detail.html', {'custom': custom})
-
-
-def custom_add(request):
-    if request.method == "POST":
-        form = CustomForm(request.POST)
-        if form.is_valid():
-            custom = form.save(commit=False)
-            custom.author = request.user
-            custom.save()
-            return redirect('custom_detail', pk=custom.pk)
-    else:
-        form = CustomForm()
-    return render(request, 'task/custom_edit.html', {'form': form})
 
 
 class TimeSchedule(CreateView):
@@ -61,8 +46,35 @@ class TimeSchedule(CreateView):
             int(form.cleaned_data['end_minute'])
         )
         schedule.author = self.request.user
-        self.object = schedule.save()
-        return redirect(custom_list)
+        schedule.save()
+        return redirect('custom_list')
+
+
+class CustomUpdateView(UpdateView):
+    model = Custom
+    form_class = CustomForm
+    success_url = reverse_lazy('custom_list')
+    template_name = "task/custom_edit.html"
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(
+            self.request, '「{}」を更新しました'.format(self.object)
+        )
+        return result
+
+
+class CustomDeleteView(DeleteView):
+    model = Custom
+    form_class = CustomForm
+    success_url = reverse_lazy('custom_list')
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(self, *args, **kwargs)
+        messages.success(
+          self.request, '「{}」を削除しました'.format(self.object)
+        )
+        return result
 
 
 class TodoListView(ListView):
@@ -73,9 +85,13 @@ class TodoListView(ListView):
 class TodoAddView(CreateView):
     model = Todo
     form_class = TodoForm
-    success_url = reverse_lazy('task:todo_list')
+    template_name = 'task/todo_add.html'
+    success_url = reverse_lazy('todo_list')
 
     def form_valid(self, form):
+        todo = form.save(commit=False)
+        todo.author = self.request.user
+        todo.save()
         result = super().form_valid(form)
         messages.success(
             self.request, '「{}」を作成しました'.format(form.instance)
@@ -85,6 +101,21 @@ class TodoAddView(CreateView):
 
 class TodoDetailView(DetailView):
     model = Todo
+
+
+class TodoUpdateView(UpdateView):
+    model = Todo
+    form_class = TodoForm
+    success_url = reverse_lazy('todo_list')
+    template_name = "task/todo_edit.html"
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        messages.success(
+            self.request, '「{}」を更新しました'.format(self.object)
+        )
+        return result
+
 
 class TodoDeleteView(DeleteView):
     model = Todo
