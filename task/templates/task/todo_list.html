@@ -33,5 +33,17 @@
         <p>Deadline {{todo.deadline_time}}</p>
     </div>
     {% endfor %}
+    <div class="container">
+        {% for custom in customs %}
+        <div class="row">
+            <div class="col-6">
+                {{ custom }}
+            </div>
+            <div class="col-6">
+                {{ custom.start_time }} ~ {{ custom.end_time}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock%}
