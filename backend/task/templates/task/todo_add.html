@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisPlay</title>
+    <link rel="stylesheet" href="../../static/css/reset.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <link rel="stylesheet" href="../../static/css/todo_add.css">
+    <link rel="stylesheet" href="../../static/css/top_menu.css">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+</head>
+
+<body>
+        <header>
+          <h1>DisPlay</h1><a class="Option_link" href=""><img src="../../static/image/Gear.svg" alt="Option"></a>
+        </header>
+        <div id="chart"></div>
+        <div class="Todo_menu">
+          <h3>Todolist</h3><button class="Landscape_button"><div class="button_text">Add</div></button><img class="Trashcan"
+            src="../../static/image/Trashcan.svg" alt="trashcan">
+        </div>
+        <div class="Task_list">
+          <div class="Task">
+            <h4>郵便局に荷物出す</h4>
+            <button class="Circle_button Play"><img class="Play_img" src="../../static/image/play.svg" alt="Play"></button><button
+              class="Circle_button Check"><img src="../../static/image/check.svg" alt="check"></button>
+            <p>Deadline 8/20</p>
+          </div>
+          <div class="Task">
+            <h4>英語1B課題</h4>
+            <button class="Circle_button Play"><img class="Play_img" src="../../static/image/play.svg" alt="Play"></button><button
+              class="Circle_button Check"><img src="../../static/image/check.svg" alt="check"></button>
+            <p>Deadline 8/25 14:00</p>
+          </div>
+        </div>
+    <div class="todo_add">
+        <div class="title">
+            <div class="caption">
+                <h3>Title</h3>
+                <div class="underline"></div>
+            </div>
+            <div class="link">
+                <button type="submit" class="onlyText">Add</button>
+                <a href="top_menu.html"><img src="../../static/image/X.svg" class="X" alt="X"></a>
+            </div>
+        </div>
+        <div class="inputfield">
+            <h2>Title</h2>
+            <img src="../../static/image/pen.svg" class="pen" alt="">
+        </div>
+        <h3>DeadLine</h3>
+        <div class="underline"></div>
+        <div class="inputfield">
+            <h2>8/10 14:35</h2>
+            <img src="../../static/image/pen.svg" class="pen" alt="">
+        </div>
+    </div>
+</body>
+<script src="../../static/js/depiction.js"></script>
+</html>
