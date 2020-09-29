@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 
 import Auth from '@/components/pages/Auth'
 import HedgeHogs from '@/components/pages/HedgeHogs'
@@ -22,7 +22,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/',
+    path: '/auth',
     name: 'Auth',
     component: Auth
   }
