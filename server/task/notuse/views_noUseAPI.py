@@ -86,6 +86,7 @@ class TodoListView(ListView):
         context["customs"] = Custom.objects.all()
         return context
 
+
 class TodoAddView(CreateView):
     model = Todo
     form_class = TodoForm

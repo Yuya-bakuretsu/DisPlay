@@ -39,14 +39,15 @@ class CustomRetrieveUpdate(generics.RetrieveUpdateAPIView):
     serializer_class = CustomSerializer
     permission_classes = (permissions.IsAuthenticated, )
 
+
 class TodoListCreate(generics.ListCreateAPIView):
     """List and create Todo"""
     queryset = Todo.objects.all()
-    serializer_class = CustomSerializer
+    serializer_class = TodoSerializer
     permission_classes = (permissions.IsAuthenticated, )
 
 
 class TodoRetrieveUpdate(generics.RetrieveUpdateAPIView):
     queryset = Todo.objects.all()
-    serializer_class = CustomSerializer
+    serializer_class = TodoSerializer
     permission_classes = (permissions.IsAuthenticated, )
