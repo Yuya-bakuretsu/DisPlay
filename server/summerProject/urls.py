@@ -8,5 +8,5 @@ app_name = "task"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', obtain_jwt_token),
-    path('', include('task.urls')),
+    path('api/', include('task.urls')),
 ]
