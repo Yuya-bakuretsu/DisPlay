@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
-import Auth from '@/components/pages/Auth'
-import HedgeHogs from '@/components/pages/HedgeHogs'
+import toppage from '@/views/Home'
 
 Vue.use(VueRouter)
 
