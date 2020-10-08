@@ -34,7 +34,7 @@ class CustomListCreate(generics.ListCreateAPIView):
 
 
 class CustomRetrieveUpdate(generics.RetrieveUpdateAPIView):
-    """Retriece and update Custom information"""
+    """Retrieve and update Custom information"""
     queryset = Custom.objects.all()
     serializer_class = CustomSerializer
     permission_classes = (permissions.IsAuthenticated, )
