@@ -9,4 +9,3 @@ db.sqlite3
 .idea
 credentials.json
 token.pickle
-.eslintrc.json
