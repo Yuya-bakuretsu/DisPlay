@@ -1,8 +1,8 @@
 <template>
-  
+  <p>test
+  </p>
 </template>
 <style>
-
 </style>
 <script>
 export default {
