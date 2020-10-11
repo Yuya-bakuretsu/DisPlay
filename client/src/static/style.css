@@ -1,10 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 body{
   text-align: center;
-}
-p{
-  font-size: 100px;
-  margin-top: 100px;
+  width: 375px;
+  margin: 0 auto 0 auto;
 }
 .v-application--wrap{
-  background-color: green;
+  background: linear-gradient(30deg, #E1E8F0,#F4F6FC );
+}
+h2.Headertitle{
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 }
