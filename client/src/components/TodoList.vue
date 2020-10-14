@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="Todo_menu">
-      <h3>Todolist</h3>
-      <button class="Landscape_button">
-        <div class="button_text">Add</div></button
-      ><img
-        class="Trashcan"
-        src="../assets/Trashcan.svg"
-        alt="trashcan"
-      />
+      <div class="Menu_right">
+        <h3>Todolist</h3>
+      </div>
+      <div class="Menu_left">
+        <button class="Landscape_button">
+          <div class="button_text">Add</div></button
+        ><img class="Trashcan" src="../assets/Trashcan.svg" alt="trashcan" />
+      </div>
     </div>
     <div class="Task_list">
       <div class="Task">

@@ -1,0 +1,19 @@
+.Todo_menu{
+display: flex;
+margin-top: 70px;
+justify-content: space-between;
+}
+.Menu_right{
+  margin-left: 38px;
+}
+.Menu_left{
+  display: flex;
+  margin-right: 38px;
+  align-items: flex-start;
+}
+.Menu_left .Landscape_button{
+  margin-right: 12px;
+}
+.Menu_left img{
+  margin-top: 1px;
+}
