@@ -1,19 +1,19 @@
 <template>
-<div>
-  <Header></Header>
-  <Chart></Chart>
-</div>
+  <div>
+    <Header></Header>
+    <Chart></Chart>
+  </div>
 </template>
-<style>
-</style>
+<style></style>
 <script>
-import Header from '../components/Header'
-import Chart from '../components/Chart'
+import Header from "../components/Header";
+import Chart from "../components/Chart";
 
 export default {
   name: "toppage",
-  components:{
-    Header,Chart
-  }
-}
+  components: {
+    Header,
+    Chart,
+  },
+};
 </script>

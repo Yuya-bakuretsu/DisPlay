@@ -1,12 +1,12 @@
 <template>
   <v-app>
-   <router-view></router-view>
+    <router-view></router-view>
   </v-app>
 </template>
 
 <script>
 export default {
-  name: 'App'
-}
+  name: "App",
+};
 </script>
 <style src="./static/style.css"></style>

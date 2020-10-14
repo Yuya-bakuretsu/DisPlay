@@ -1,16 +1,17 @@
 /* eslint-disable */
 const d3 = require('d3');
-var w = 307, h = 307;
-var outerRadius = (w / 2) - 30;
-var innerRadius = outerRadius - 60;
 
 // create canvas
-var svg = d3.select('#chart')
-  .append('svg')
-  .attr('width', w)
-  .attr('height', h)
-  .append('g')
-  .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
+const svg = function () {
+  var w = 307;
+  var h = 307;
+  d3.select('#chart')
+    .append('svg')
+    .attr('width', w)
+    .attr('height', h)
+    .append('g')
+    .attr('transform', 'translate(' + w / 2 + ',' + h / 2 + ')');
+}
 
 // create gradient
 const createGradient = function (color, color1, id) {
@@ -63,7 +64,7 @@ const createGrooveShadow = function () {
 
   filter.append('feFlood')
     .attr('flood-color', 'rgba(40, 40, 60);')
-    .attr('flood-opacity', '0.6')
+    .attr('flood-opacity', '0.4')
     .attr('result', 'color')
 
   filter.append('feComposite')
@@ -108,6 +109,9 @@ const createDropShadow = function () {
 
 // create groove
 const createGroove = function () {
+  var w = 307, h = 307;
+  var outerRadius = (w / 2) - 30;
+  var innerRadius = outerRadius - 60;
   var arcBackground = d3.arc()
     .innerRadius(innerRadius)
     .outerRadius(outerRadius)
@@ -157,6 +161,9 @@ const createClock = function () {
 
 // create task
 const createTask = function (startTime, endTime, code) {
+  var w = 307, h = 307;
+  var outerRadius = (w / 2) - 30;
+  var innerRadius = outerRadius - 60;
   var arcForeground = d3.arc()
     .innerRadius(innerRadius)
     .outerRadius(outerRadius)
@@ -174,4 +181,4 @@ const add = (num1, num2) => {
   return num1 + num2;
 };
 
-export default { add,createTask, createClock, createGroove, createDropShadow, createGrooveShadow, createGradient }
+export default { svg, createTask, createClock, createGroove, createDropShadow, createGrooveShadow, createGradient }
