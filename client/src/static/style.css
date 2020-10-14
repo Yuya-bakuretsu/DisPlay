@@ -6,10 +6,98 @@ body{
 }
 .v-application--wrap{
   background: linear-gradient(30deg, #E1E8F0,#F4F6FC );
+  font-family: 'Roboto', sans-serif;
+  color: #2C2C2C;
 }
-h2.Headertitle{
+h1{
   font-size: 22px;
   letter-spacing: 0.2em;
-  font-family: 'Roboto', sans-serif;
   font-weight: 400;
+}
+h2{
+  font-weight: 300;
+  font-size: 20px;
+  letter-spacing: 0.15em;
+}
+h3{
+  font-weight: 300;
+  font-size: 17px;
+  letter-spacing: 0.15em;
+}
+h4{
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+}
+p{
+  font-weight: 300;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: #646464;
+}
+.Landscape_button{
+  width: 55px;
+  height: 18px;
+  font-size: 8px;
+  border-radius: 8px;
+  background:linear-gradient(30deg,#FDFDFD, #FCFCFC);
+  letter-spacing: 0.15em;
+  text-align: center;
+  font-weight: 300;
+}
+button{
+  font-family: 'Roboto', sans-serif;
+  color: #A0A0A0;
+  font-weight: 300;
+  box-shadow:
+  1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+  -1.5px -1.5px 3px rgba(248, 253, 255, 0.9),
+  inset 1px 1.5px 3px transparent,
+  inset -1px -1.5px 3px transparent;
+  transition: box-shadow 0.5s;
+}
+button:active{
+  box-shadow:
+  1.5px 1.5px 3px transparent,
+  -1.5px -1.5px 3px transparent,
+  inset 1px 1.5px 3px rgba(0, 0, 0, 0.1),
+  inset -1px -1.5px 3px rgba(248, 253, 255, 0.9);
+}
+.Login.Landscape_button{
+  background:linear-gradient(45deg,#65B2FF, #5F9BE0);
+  width: 103px;
+  height: 29px;
+  color: #ffffff;
+  font-size: 9px;
+}
+button:active.Login{
+  box-shadow:
+  1.5px 1.5px 3px transparent,
+  -1.5px -1.5px 3px transparent,
+  inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+  inset -1.5px -1.5px 3px rgba(149, 205, 250, 0.6);
+}
+.Logout.Landscape_button{
+  background:linear-gradient(15deg, #FF6565, #DB5353);
+  width: 103px;
+  height: 29px;
+  color: #ffffff;
+  font-size: 9px;
+}
+button:active.Logout{
+  box-shadow:
+  1.5px 1.5px 3px transparent,
+  -1.5px -1.5px 3px transparent,
+  inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
+  inset -1.5px -1.5px 3px rgba(255, 179, 171, 0.6);
+}
+.Circle_button{
+  background:linear-gradient(15deg, #FDFDFD, #F7F7F7);
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  box-shadow: 1.5px 1.5px 3px 0px rgb(0, 0, 0, 0.16);
+}
+.Play_img{
+  margin: 0 0 0 3.5px;
 }
