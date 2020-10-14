@@ -9,7 +9,4 @@ export default {
   name: 'App'
 }
 </script>
-<style>
-@import "./static/reset.css";
-@import "./static/style.css";
-</style>
+<style src="./static/style.css"></style>
