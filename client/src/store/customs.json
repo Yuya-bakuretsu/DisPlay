@@ -1,0 +1,8 @@
+[
+  { "name": "running", "startTime": "14:00", "endTime": "16:00" },
+  { "name": "homework", "startTime": "6:45", "endTime": "9:00" },
+  { "name": "go to shopping", "startTime": "21:00", "endTime": "21:30" },
+  { "name": "lunch", "startTime": "12:00", "endTime": "13:00" },
+  { "name": "dinner", "startTime": "19:00", "endTime": "20:00" },
+  { "name": "sleep", "startTime": "23:00", "endTime": "5:00" }
+]

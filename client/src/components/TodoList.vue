@@ -11,21 +11,36 @@
       </div>
     </div>
     <div class="Task_list">
-      <div class="Task">
-        <h4>郵便局に荷物出す</h4>
+      <div class="Task" v-for="todo in todos" :key="todo.id">
+      <!-- <div class="Task"> -->
+        <h4 class="Task_title">{{todo.name}}</h4>
         <button class="Circle_button Play">
           <img class="Play_img" src="../assets/Play.svg" alt="Play" /></button
         ><button class="Circle_button Check">
           <img src="../assets/Check.svg" alt="check" />
         </button>
-        <p>Deadline 8/20</p>
+        <p class="Task_deadline">Deadline 8/20</p>
       </div>
     </div>
   </div>
 </template>
 <style src="../static/TodoList.css"></style>
+
 <script>
+import todos from '../store/todos'
+console.log(todos)
+
 export default {
   name: "TodoList",
+  data() {
+    return {
+      todos: todos,
+    };
+  },
+  // mounted: function() {
+  //   this.axios.get("http://localhost:8080/src/store/todos.json").then((response) => {
+  //     console.log(response);
+  //   });
+  // },
 };
 </script>
