@@ -7,7 +7,7 @@
     </div>
   </div>
 </template>
-<style src="../static/Header.css"></style>
+<style src="../static/css/Header.css"></style>
 <script>
 export default {
   name: "Header",

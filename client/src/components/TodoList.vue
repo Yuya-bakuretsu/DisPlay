@@ -24,7 +24,7 @@
     </div>
   </div>
 </template>
-<style src="../static/TodoList.css"></style>
+<style src="../static/css/TodoList.css"></style>
 
 <script>
 import todos from '../store/todos'

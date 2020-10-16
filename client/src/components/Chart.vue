@@ -3,11 +3,11 @@
     <div id="chart"></div>
   </div>
 </template>
-<style src="../static/Chart.css"></style>
+<style src="../static/css/Chart.css"></style>
 <script>
 /* eslint-disable */
 import * as d3 from "d3";
-import depiction from "../static/depiction";
+import depiction from "../static/js/depiction";
 import gradients from "../store/gradients";
 import customs from "../store/customs";
 
