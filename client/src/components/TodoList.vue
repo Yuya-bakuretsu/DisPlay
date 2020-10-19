@@ -7,17 +7,24 @@
       <div class="Menu_left">
         <button class="Landscape_button">
           <div class="button_text">Add</div></button
-        ><img class="Trashcan" src="../assets/Trashcan.svg" alt="trashcan" />
+        ><img
+          class="Trashcan"
+          src="../assets/img/Trashcan.svg"
+          alt="trashcan"
+        />
       </div>
     </div>
     <div class="Task_list">
       <div class="Task" v-for="todo in todos" :key="todo.id">
-      <!-- <div class="Task"> -->
-        <h4 class="Task_title">{{todo.name}}</h4>
-        <button class="Circle_button Play">
-          <img class="Play_img" src="../assets/Play.svg" alt="Play" /></button
+        <h4 class="Task_title">{{ todo.name }}</h4>
+        <button class="Circle_button Play" v-on:click="addSchedule">
+          <img
+            class="Play_img"
+            src="../assets/img/Play.svg"
+            alt="Play"
+          /></button
         ><button class="Circle_button Check">
-          <img src="../assets/Check.svg" alt="check" />
+          <img src="../assets/img/Check.svg" alt="check" />
         </button>
         <p class="Task_deadline">Deadline 8/20</p>
       </div>
@@ -27,8 +34,7 @@
 <style src="../static/css/TodoList.css"></style>
 
 <script>
-import todos from '../store/todos'
-console.log(todos)
+import todos from "../store/todos";
 
 export default {
   name: "TodoList",
@@ -36,6 +42,11 @@ export default {
     return {
       todos: todos,
     };
+  },
+  methods: {
+    addSchedule: function() {
+      alert("テストでよ");
+    },
   },
   // mounted: function() {
   //   this.axios.get("http://localhost:8080/src/store/todos.json").then((response) => {

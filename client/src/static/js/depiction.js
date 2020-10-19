@@ -173,7 +173,7 @@ const createTask = function (startTime, endTime, code) {
   var pathForeground = d3.select("g").append('path')
     .style('fill', 'url(#taskGradient' + code + ')')
     .style('filter', 'url(#dropShadow)')
-    .attr('d', arcForeground);
+    .attr('d', arcForeground)
 };
 
 //export test

@@ -3,7 +3,7 @@
     <div class="Header">
       <!-- TODO:Headertitleを今のページによって変える -->
       <h1 class="Headertitle">DisPlay</h1>
-      <img src="../assets/Gear.svg" alt="gear" class="Gear" />
+      <img src="../assets/img/Gear.svg" alt="gear" class="Gear" />
     </div>
   </div>
 </template>
