@@ -1,0 +1,42 @@
+.Todo_menu{
+display: flex;
+margin: 70px 0 25px 0;
+justify-content: space-between;
+}
+.Menu_right{
+  margin-left: 38px;
+}
+.Menu_left{
+  display: flex;
+  margin-right: 38px;
+  align-items: flex-start;
+}
+.Menu_left .Landscape_button{
+  margin-right: 12px;
+}
+.Menu_left img{
+  margin-top: 1px;
+}
+.Task_list{
+  margin: 6px 0 0 2px;
+}
+.Task{
+  display: flex;
+  margin: 0 0 0 38px;
+  justify-content: left;
+  flex-wrap: wrap;
+}
+h4.Task_title{
+  width: 163px;
+  text-align: left;
+}
+button.Play{
+  margin: 0 0 0 58px;
+}
+button.Check{
+  margin: 0 0 0 15px;
+}
+p.Task_deadline{
+  margin: -8px 0 0 3px;
+  text-align: left;
+}
