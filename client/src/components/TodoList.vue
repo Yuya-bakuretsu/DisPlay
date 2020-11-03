@@ -16,8 +16,8 @@
     </div>
     <div class="Task_list">
       <div class="Task" v-for="todo in todos" :key="todo.id">
-        <h4 class="Task_title">{{ todo.name }}</h4>
-        <button class="Circle_button Play" v-on:click="addSchedule">
+        <h4 class="Task_title">{{ todo.title }}</h4>
+        <button class="Circle_button Play">
           <img
             class="Play_img"
             src="../assets/img/Play.svg"
@@ -26,7 +26,7 @@
         ><button class="Circle_button Check">
           <img src="../assets/img/Check.svg" alt="check" />
         </button>
-        <p class="Task_deadline">Deadline 8/20</p>
+        <p class="Task_deadline">Deadline {{ todo.deadline_time }}</p>
       </div>
     </div>
   </div>
@@ -34,24 +34,15 @@
 <style src="../static/css/TodoList.css"></style>
 
 <script>
-import todos from "../store/todos";
+/* eslint-disable */
+import api from "../store/todoApi";
 
 export default {
   name: "TodoList",
-  data() {
-    return {
-      todos: todos,
-    };
-  },
-  methods: {
-    addSchedule: function() {
-      alert("テストでよ");
-    },
-  },
-  // mounted: function() {
-  //   this.axios.get("http://localhost:8080/src/store/todos.json").then((response) => {
-  //     console.log(response);
-  //   });
+  // computed: {
+  //   todos() {
+  //     return this.$store.state.todos;
+  //   },
   // },
 };
 </script>
