@@ -8,7 +8,7 @@ const routes = [
   {
     // TODO add login confirmation page
     path: '/',
-    name: 'toppage',
+    name: 'Toppage',
     component: toppage
   }
 ]

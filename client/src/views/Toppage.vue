@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Header></Header>
-    <Chart></Chart>
-    <TodoList></TodoList>
+    <Header />
+    <Chart />
+    <TodoList />
   </div>
 </template>
 <style></style>
@@ -12,7 +12,7 @@ import Chart from "../components/Chart";
 import TodoList from "../components/TodoList";
 
 export default {
-  name: "toppage",
+  name: "Toppage",
   components: {
     Header,
     Chart,
