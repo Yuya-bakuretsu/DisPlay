@@ -34,15 +34,24 @@
 <style src="../static/css/TodoList.css"></style>
 
 <script>
-/* eslint-disable */
-import api from "../store/todoApi";
+import store from "../store/index";
 
 export default {
   name: "TodoList",
-  // computed: {
-  //   todos() {
-  //     return this.$store.state.todos;
-  //   },
-  // },
+  data: function () {
+    return {
+      todos: [],
+    };
+  },
+  created: function () {
+    console.log(this);
+    store.test();
+    // Json取得
+    store.todoGet();
+    // Json取得後に呼び出される
+    store.$on("STORE_GET_TODO_COMPLETE", () => {
+      this.todos = store.getData("todosData");
+    });
+  },
 };
 </script>
