@@ -34,7 +34,8 @@
 <style src="../static/css/TodoList.css"></style>
 
 <script>
-import store from "../store/index";
+/* eslint-disable */
+import axios from "axios";
 
 export default {
   name: "TodoList",
@@ -44,13 +45,33 @@ export default {
     };
   },
   created: function () {
-    console.log(this);
-    store.test();
-    // Json取得
-    store.todoGet();
-    // Json取得後に呼び出される
-    store.$on("STORE_GET_TODO_COMPLETE", () => {
-      this.todos = store.getData("todosData");
+    let url = "http://127.0.0.1:8000/api/todo";
+    let config = {
+      headers: {
+        Authorization:
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA0ODM5MDA0LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNDc1MjYwNH0.NzWxvS5ZB2pXvLpEyPFFzlhqxgmk7he64hSVTwWxVm0",
+      },
+    };
+    axios.get(url, config).then((response) => {
+      for (var i = 0; i < response.data.length; i++) {
+        var data = response.data;
+        var splitDate = data[i].deadline_time.split("T");
+
+        var yearMonthDay = splitDate[0].split("-");
+        var year = yearMonthDay[0];
+        var month = Number(yearMonthDay[1]);
+        var day = Number(yearMonthDay[2]);
+
+        var globalTime = splitDate[1].split("+");
+        var localTime = globalTime[0].split(":");
+        var hour = localTime[0];
+        var minute = localTime[1];
+        var second = localTime[2];
+
+        data[i].deadline_time = month + "/" + day;
+      }
+      this.todos = data;
+      console.log(data)
     });
   },
 };
