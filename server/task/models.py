@@ -9,6 +9,7 @@ class Custom(models.Model):
     title = models.CharField(max_length=200)
     start_time = models.TimeField('開始時間', default=datetime.time(0, 0, 0))
     end_time = models.TimeField('終了時間', default=datetime.time(0, 0, 0))
+    repeat_flag = models.CharField(max_length=7)
 
     def __str__(self):
         return self.title

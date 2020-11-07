@@ -21,4 +21,4 @@ class CustomSerializer(serializers.ModelSerializer):
     """A serializer for the Custom model"""
     class Meta:
         model = Custom
-        fields = ('id', 'author', 'title', 'start_time', 'end_time')
+        fields = ('id', 'author', 'title', 'start_time', 'end_time', 'repeat_flag')
