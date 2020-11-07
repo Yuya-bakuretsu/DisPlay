@@ -8,7 +8,7 @@
 /* eslint-disable */
 import * as d3 from "d3";
 import depiction from "../static/js/depiction";
-import gradients from "../store/gradients";
+import gradients from "../assets/gradients";
 import customs from "../store/customs";
 
 export default {
@@ -24,7 +24,7 @@ export default {
     // create task and set gradient
     for (var i = 0; i < customs.length; ++i) {
       // for test
-      console.log("for is ok");
+      // console.log("for is ok");
 
       var number = customs[i].name.charCodeAt(0);
       var code = number.toString().split("").pop();
@@ -40,7 +40,7 @@ export default {
       if (startTime > endTime) {
         startTime = 0;
         //if test
-        console.log("if is ok");
+        // console.log("if is ok");
       }
 
       depiction.createGradient(

@@ -71,7 +71,6 @@ export default {
         data[i].deadline_time = month + "/" + day;
       }
       this.todos = data;
-      console.log(data)
     });
   },
 };
