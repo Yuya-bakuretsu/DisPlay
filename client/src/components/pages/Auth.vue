@@ -95,7 +95,7 @@ export default {
             }).catch(e => {
                 this.loading = false;
                 Swal.fire({
-                icon: 'warning',
+                type: 'warning',
                 title: 'Error',
                 text: 'ユーザー名もしくはパスワード、または両方が間違っています',
                 showConfirmButton:false,
