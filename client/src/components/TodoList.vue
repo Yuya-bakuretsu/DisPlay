@@ -44,6 +44,7 @@ export default {
       todos: [],
     };
   },
+  //TODO 401errorが出るたびにtokenを取得し直す機能を追加
   created: function () {
     let url = "http://127.0.0.1:8000/api/todo";
     let config = {
