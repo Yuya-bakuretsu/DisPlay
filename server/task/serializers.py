@@ -12,18 +12,18 @@ class UserSerializer(serializers.ModelSerializer):
 
 class TodoSerializer(serializers.ModelSerializer):
     """A serializer for the Todo model"""
-    d_date = serializers.SerializerMethodField()
-    d_time = serializers.SerializerMethodField()
+    # d_date = serializers.SerializerMethodField()
+    # d_time = serializers.SerializerMethodField()
 
     class Meta:
         model = Todo
         fields = ('id', 'author', 'title', 'start_time', 'end_time', 'deadline_time')
 
-    def get_d_date(self, instance):
-        pass
-
-    def get_d_time(self, instance):
-        pass
+    # def get_d_date(self, instance):
+    #     pass
+    #
+    # def get_d_time(self, instance):
+    #     pass
 
 
 class CustomSerializer(serializers.ModelSerializer):
