@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div id="chart" v-on:click="addVisible()"></div>
+    <div id="chart"></div>
+
+    <ScheduleDetail v-if="currentView"></ScheduleDetail>
   </div>
 </template>
 <style src="../static/css/Chart.css"></style>
@@ -11,12 +13,17 @@ import depiction from "../static/js/depiction";
 import gradients from "../assets/gradients";
 import customs from "../store/customs";
 import axios from "axios";
+import ScheduleDetail from "./SceduleDetail";
 
 export default {
   name: "Chart",
+  components: {
+    ScheduleDetail,
+  },
   data: function () {
     return {
       customs: [],
+      currentView: 0,
     };
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
@@ -42,11 +49,12 @@ export default {
   },
   watch: {
     customs: function () {
-      console.log(this.customs);
+      // data test
+      // console.log(this.customs);
       // create task and set gradient
       for (var i = 0; i < this.customs.length; ++i) {
         // for test
-        console.log("for is ok");
+        // console.log("for is ok");
 
         var number = this.customs[i].title.charCodeAt(0);
         var code = number.toString().split("").pop();
@@ -62,16 +70,19 @@ export default {
         if (startTime > endTime) {
           startTime = 0;
           //if test
-          console.log("if is ok");
+          // console.log("if is ok");
         }
 
         depiction.createGradient(
           gradients[code].color,
           gradients[code].color1,
-          "taskGradient" + code + ""
+          "taskGradient" + code
         );
+        var id = i;
+        console.log(id);
+        depiction.createTask(startTime, endTime, code, id);
 
-        depiction.createTask(startTime, endTime, code);
+        
       }
     },
   },

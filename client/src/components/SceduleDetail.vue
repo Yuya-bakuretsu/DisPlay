@@ -8,31 +8,25 @@
         </div>
         <div class="link">
           <div class="editText">Edit</div>
-          <img
-            src="../assets/img/X.svg"
-            alt="X"
-            class="X"
-            id="X-js"
-            v-on:click="removeVisible()"
-          />
+          <img src="../assets/img/X.svg" alt="X" class="X" id="X-js" />
         </div>
       </div>
       <div class="field">
-        <h2 class="titleText">Class</h2>
+        <h2 class="titleText">{{ task.title }}</h2>
       </div>
     </div>
     <div class="wrap">
       <h3 class="captionText">Date</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
-        <h2 class="dateText">8/10 14:35~16:30</h2>
+        <h2 class="dateText">{{ task.start_time }}~{{ task.end_time }}</h2>
       </div>
     </div>
     <div class="wrap">
       <h3 class="date captionText">Memo</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
-        <h2 class="memoText">I have to do my homework.</h2>
+        <h2 class="memoText">{{ task.memo }}</h2>
       </div>
     </div>
   </div>
@@ -41,15 +35,10 @@
 <script>
 export default {
   name: "ScheduleDetail",
-  methods: {
-    addVisible: function () {
-      // var scheduleDetail = document.getElementById("scheduleDetail-js");
-      // scheduleDetail.classList.add("visible");
-    },
-    removeVisible: function () {
-      // var scheduleDetail = document.getElementById("scheduleDetail-js");
-      // scheduleDetail.classList.remove("visible");
-    },
+  data: function () {
+    return {
+      task: [],
+    };
   },
 };
 </script>

@@ -160,7 +160,7 @@ const createClock = function () {
 };
 
 // create task
-const createTask = function (startTime, endTime, code) {
+const createTask = function (startTime, endTime, code, id) {
   var w = 307, h = 307;
   var outerRadius = (w / 2) - 30;
   var innerRadius = outerRadius - 60;
@@ -174,11 +174,7 @@ const createTask = function (startTime, endTime, code) {
     .style('fill', 'url(#taskGradient' + code + ')')
     .style('filter', 'url(#dropShadow)')
     .attr('d', arcForeground)
-};
-
-//export test
-const add = (num1, num2) => {
-  return num1 + num2;
+    .attr('id', 'js-task' + id)
 };
 
 export default { svg, createTask, createClock, createGroove, createDropShadow, createGrooveShadow, createGradient }
