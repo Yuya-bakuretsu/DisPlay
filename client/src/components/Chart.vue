@@ -34,44 +34,46 @@ export default {
   },
   mounted() {
     depiction.svg();
-
     depiction.createGradient("#fbfbff", "#ebebec", "lightGradient");
     depiction.createGrooveShadow();
     depiction.createDropShadow();
     depiction.createGroove();
-    console.log(this.customs);
-    // create task and set gradient
-    for (var i = 0; i < this.customs.length; ++i) {
-      // for test
-      console.log("for is ok");
-
-      var number = this.customs[i].name.charCodeAt(0);
-      var code = number.toString().split("").pop();
-
-      var start = this.customs[i].startTime.split(":");
-
-      var end = this.customs[i].endTime.split(":");
-
-      var startTime = (start[0] + start[1] * 0.166) * 0.1;
-
-      var endTime = (end[0] + end[1] * 0.166) * 0.1;
-
-      if (startTime > endTime) {
-        startTime = 0;
-        //if test
-        console.log("if is ok");
-      }
-
-      depiction.createGradient(
-        gradients[code].color,
-        gradients[code].color1,
-        "taskGradient" + code + ""
-      );
-
-      depiction.createTask(startTime, endTime, code);
-    }
-
     depiction.createClock();
+  },
+  watch: {
+    customs: function () {
+      console.log(this.customs);
+      // create task and set gradient
+      for (var i = 0; i < this.customs.length; ++i) {
+        // for test
+        console.log("for is ok");
+
+        var number = this.customs[i].title.charCodeAt(0);
+        var code = number.toString().split("").pop();
+
+        var start = this.customs[i].start_time.split(":");
+
+        var end = this.customs[i].end_time.split(":");
+
+        var startTime = (start[0] + start[1] * 0.166) * 0.1;
+
+        var endTime = (end[0] + end[1] * 0.166) * 0.1;
+
+        if (startTime > endTime) {
+          startTime = 0;
+          //if test
+          console.log("if is ok");
+        }
+
+        depiction.createGradient(
+          gradients[code].color,
+          gradients[code].color1,
+          "taskGradient" + code + ""
+        );
+
+        depiction.createTask(startTime, endTime, code);
+      }
+    },
   },
 };
 </script>
