@@ -2,7 +2,10 @@
   <div>
     <div id="chart"></div>
 
-    <ScheduleDetail v-if="currentView"></ScheduleDetail>
+    <ScheduleDetail
+      v-if="currentView"
+      @childEvent="currentViewEvent"
+    ></ScheduleDetail>
   </div>
 </template>
 <style src="../static/css/Chart.css"></style>
@@ -22,7 +25,7 @@ export default {
   },
   data: function () {
     return {
-      customs: [],
+      customs: "false",
       currentView: 0,
     };
   },
@@ -32,7 +35,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA0ODM5MDA0LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNDc1MjYwNH0.NzWxvS5ZB2pXvLpEyPFFzlhqxgmk7he64hSVTwWxVm0",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1MDgxMTI0LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNDk5NDcyNH0.J4Vm0OletODaD1eT4bceeDSBsCOC-LKULR2ArYTAyl4",
       },
     };
     axios.get(url, config).then((response) => {
@@ -49,13 +52,9 @@ export default {
   },
   watch: {
     customs: function () {
-      // data test
-      // console.log(this.customs);
+      var _this = this; //vueインスタンスのthisを変数として格納
       // create task and set gradient
       for (var i = 0; i < this.customs.length; ++i) {
-        // for test
-        // console.log("for is ok");
-
         var number = this.customs[i].title.charCodeAt(0);
         var code = number.toString().split("").pop();
 
@@ -69,8 +68,6 @@ export default {
 
         if (startTime > endTime) {
           startTime = 0;
-          //if test
-          // console.log("if is ok");
         }
 
         depiction.createGradient(
@@ -78,12 +75,27 @@ export default {
           gradients[code].color1,
           "taskGradient" + code
         );
-        var id = i;
-        console.log(id);
+
+        var id = this.customs[i].id;
+
+        // var debug = 1;
+        // if (debug) {
+        //   console.log(id);
+        // }
+        var view = 0;
+
         depiction.createTask(startTime, endTime, code, id);
 
-        
+        document.getElementById(id).onclick = function () {
+          console.log("クリックしたタスクは" + this.id + "番でよ");
+          _this.currentView = "true";
+        };
       }
+    },
+  },
+  methods: {
+    currentViewEvent(value) {
+      this.currentView = value;
     },
   },
 };

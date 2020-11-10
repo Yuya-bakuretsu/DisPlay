@@ -8,7 +8,13 @@
         </div>
         <div class="link">
           <div class="editText">Edit</div>
-          <img src="../assets/img/X.svg" alt="X" class="X" id="X-js" />
+          <img
+            src="../assets/img/X.svg"
+            alt="X"
+            class="X"
+            id="X-js"
+            v-on:click="sendCurrentView"
+          />
         </div>
       </div>
       <div class="field">
@@ -39,6 +45,11 @@ export default {
     return {
       task: [],
     };
+  },
+  methods: {
+    sendCurrentView() {
+      this.$emit("childEvent", false);
+    },
   },
 };
 </script>
