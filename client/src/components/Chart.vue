@@ -38,7 +38,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1MDgxMTI0LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNDk5NDcyNH0.J4Vm0OletODaD1eT4bceeDSBsCOC-LKULR2ArYTAyl4",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1MTY3NjA3LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTA4MTIwN30.3WPlPz7q9BMg4_-_oQUtDZsMEFygGsZX6tVV16jJWqE",
       },
     };
     axios.get(url, config).then((response) => {
@@ -56,44 +56,54 @@ export default {
   watch: {
     customs: function () {
       var _this = this; //vueインスタンスのthisを変数として格納
+      var date = new Date();
+      var dayOfWeek = date.getDay();
+      console.log(dayOfWeek);
+
+
       // create task and set gradient
       for (var i = 0; i < this.customs.length; ++i) {
-        var number = this.customs[i].title.charCodeAt(0);
-        var code = number.toString().split("").pop();
+        // カスタムの曜日を判断
+        var repeatFlag = this.customs[i].repeat_flag.split("");
+        if (repeatFlag[dayOfWeek]) {
+          var number = this.customs[i].title.charCodeAt(0);
+          var code = number.toString().split("").pop();
 
-        var start = this.customs[i].start_time.split(":");
+          //start_timeとend_timeの型整形
+          var start = this.customs[i].start_time.split(":");
 
-        var end = this.customs[i].end_time.split(":");
+          var end = this.customs[i].end_time.split(":");
 
-        var startTime = (start[0] + start[1] * 0.166) * 0.1;
+          var startTime = (start[0] + start[1] * 0.166) * 0.1;
 
-        var endTime = (end[0] + end[1] * 0.166) * 0.1;
+          var endTime = (end[0] + end[1] * 0.166) * 0.1;
 
-        var displayStart = Number(start[0]) + ":" + start[1];
-        var displayEnd = Number(end[0]) + ":" + end[1];
-        this.customs[i].start_time = displayStart;
-        this.customs[i].end_time = displayEnd;
+          var displayStart = Number(start[0]) + ":" + start[1];
+          var displayEnd = Number(end[0]) + ":" + end[1];
+          this.customs[i].start_time = displayStart;
+          this.customs[i].end_time = displayEnd;
 
-        if (startTime > endTime) {
-          startTime = 0;
+          if (startTime > endTime) {
+            startTime = 0;
+          }
+
+          depiction.createGradient(
+            gradients[code].color,
+            gradients[code].color1,
+            "taskGradient" + code
+          );
+
+          var id = this.customs[i].id;
+
+          depiction.createTask(startTime, endTime, code, id);
+
+          document.getElementById(id).onclick = function () {
+            var clickedNumber = this.id - 1;
+            // console.log("クリックしたタスクは" + clickedNumber + "番でよ");
+            _this.currentView = "true";
+            _this.task = _this.customs[clickedNumber];
+          };
         }
-
-        depiction.createGradient(
-          gradients[code].color,
-          gradients[code].color1,
-          "taskGradient" + code
-        );
-
-        var id = this.customs[i].id;
-
-        depiction.createTask(startTime, endTime, code, id);
-
-        document.getElementById(id).onclick = function () {
-          var clickedNumber = this.id - 1;
-          // console.log("クリックしたタスクは" + clickedNumber + "番でよ");
-          _this.currentView = "true";
-          _this.task = _this.customs[clickedNumber];
-        };
       }
     },
   },
