@@ -41,11 +41,7 @@
 <script>
 export default {
   name: "ScheduleDetail",
-  data: function () {
-    return {
-      task: [],
-    };
-  },
+  props: ["task"],
   methods: {
     sendCurrentView() {
       this.$emit("childEvent", false);

@@ -5,6 +5,7 @@
     <ScheduleDetail
       v-if="currentView"
       @childEvent="currentViewEvent"
+      :task="task"
     ></ScheduleDetail>
   </div>
 </template>
@@ -25,8 +26,9 @@ export default {
   },
   data: function () {
     return {
-      customs: "false",
-      currentView: 0,
+      customs: [],
+      task: [],
+      currentView: false,
     };
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
@@ -66,6 +68,11 @@ export default {
 
         var endTime = (end[0] + end[1] * 0.166) * 0.1;
 
+        var displayStart = Number(start[0]) + ":" + start[1];
+        var displayEnd = Number(end[0]) + ":" + end[1];
+        this.customs[i].start_time = displayStart;
+        this.customs[i].end_time = displayEnd;
+
         if (startTime > endTime) {
           startTime = 0;
         }
@@ -78,17 +85,13 @@ export default {
 
         var id = this.customs[i].id;
 
-        // var debug = 1;
-        // if (debug) {
-        //   console.log(id);
-        // }
-        var view = 0;
-
         depiction.createTask(startTime, endTime, code, id);
 
         document.getElementById(id).onclick = function () {
-          console.log("クリックしたタスクは" + this.id + "番でよ");
+          var clickedNumber = this.id - 1;
+          // console.log("クリックしたタスクは" + clickedNumber + "番でよ");
           _this.currentView = "true";
+          _this.task = _this.customs[clickedNumber];
         };
       }
     },
