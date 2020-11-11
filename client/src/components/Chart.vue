@@ -1,12 +1,13 @@
 <template>
   <div>
     <div id="chart"></div>
-
-    <ScheduleDetail
-      v-if="currentView"
-      @childEvent="currentViewEvent"
-      :task="task"
-    ></ScheduleDetail>
+    <transition>
+      <ScheduleDetail
+        v-if="currentView"
+        @childEvent="currentViewEvent"
+        :task="task"
+      ></ScheduleDetail>
+    </transition>
   </div>
 </template>
 <style src="../static/css/Chart.css"></style>
