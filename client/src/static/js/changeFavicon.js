@@ -1,4 +1,4 @@
-const save = function () {
+const changeFavicon = function () {
   var svg = document.querySelector("svg");
 
   var svgData = new XMLSerializer().serializeToString(svg);
@@ -51,4 +51,4 @@ const save = function () {
   };
 };
 
-export default { save };
+export default { changeFavicon };

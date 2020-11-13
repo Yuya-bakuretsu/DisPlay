@@ -54,6 +54,7 @@ export default {
       },
     };
     axios.get(url, config).then((response) => {
+      // todosのデータ整形
       for (var i = 0; i < response.data.length; i++) {
         var data = response.data;
         var splitDate = data[i].deadline_time.split("T");
