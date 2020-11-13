@@ -1,5 +1,4 @@
-const save = function() {
-  var image = new Image();
+const save = function () {
   var svg = document.querySelector("svg");
 
   var svgData = new XMLSerializer().serializeToString(svg);
@@ -11,15 +10,45 @@ const save = function() {
 
   var ctx = canvas.getContext("2d");
 
-  ctx.drawImage(image, 0, 0); //空要素の作成
-  var a = document.createElement("a"); //aタグを作成
-  a.href = canvas.toDataURL("image/png"); //aタグのリンクに関数を設定
-  a.setAttribute("download", "chart.png"); //属性:downloadと属性値:chart.pngを設定
-  a.dispatchEvent(new MouseEvent("click")); //aタグにクリックイベントを送信(発火)
+  var image = new Image();
+  // console.log(svgData);
 
+  // svgDataをURIデータに変換後base64データに変換し、imageのsrcの属性値に設定
   image.src =
     "data:image/svg+xml;charset=utf-8;base64," +
     btoa(unescape(encodeURIComponent(svgData)));
+
+  var docHead = document.getElementsByTagName("head")[0];
+
+  function change(iconURL) {
+    addLink(iconURL, "icon");
+  }
+
+  function addLink(iconURL, relValue) {
+    var link = document.createElement("link");
+    link.type = "image/png";
+    link.rel = relValue;
+    link.href = iconURL;
+    removeLinkIfExists(relValue);
+    docHead.appendChild(link);
+  }
+
+  function removeLinkIfExists(relValue) {
+    var links = docHead.getElementsByTagName("link");
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      if (link.type == "image/png" && link.rel == relValue) {
+        this.docHead.removeChild(link);
+        return;
+      }
+    }
+  }
+
+  image.onload = function () {
+    ctx.drawImage(image, 0, 0); //空要素の作成
+    change(image.src);
+    
+  };
 };
 
 export default { save };
