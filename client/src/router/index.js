@@ -1,20 +1,20 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import toppage from '../views/Toppage.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import toppage from "../views/Toppage.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     // TODO add login confirmation page
-    path: '/',
-    name: 'Toppage',
-    component: toppage
-  }
-]
+    path: "/",
+    name: "Toppage",
+    component: toppage,
+  },
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
