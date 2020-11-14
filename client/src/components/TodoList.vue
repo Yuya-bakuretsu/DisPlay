@@ -1,5 +1,6 @@
 <template>
   <div>
+    <TodoAdd v-if="todoAddView" />
     <div class="Todo_menu">
       <div class="Menu_right">
         <h3>Todolist</h3>
@@ -23,7 +24,7 @@
             src="../assets/img/Play.svg"
             alt="Play"
           /></button
-        ><button class="Circle_button Check">
+        ><button class="Circle_button Check" v-on:click="todoAddViewChange">
           <img src="../assets/img/Check.svg" alt="check" />
         </button>
         <p class="Task_deadline">Deadline {{ todo.deadline_time }}</p>
@@ -36,12 +37,15 @@
 <script>
 /* eslint-disable */
 import axios from "axios";
+import TodoAdd from "./TodoAdd";
 
 export default {
   name: "TodoList",
+  components: { TodoAdd },
   data: function () {
     return {
       todos: [],
+      todoAddView: false,
     };
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
@@ -50,7 +54,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1MzE5NjMwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTIzMzIzMH0.4oXyoyfkZ5kTsTt_fS5ZD0n7v05CFAzORzz52DZ9lbI",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1NDAyMTk1LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTMxNTc5NX0.tjL6dcRxmlqtVk7pNT6mCv9_uTEl9CWGbORc1KS_FfQ",
       },
     };
     axios.get(url, config).then((response) => {
@@ -75,5 +79,10 @@ export default {
       this.todos = data;
     });
   },
+  methods: {
+    todoAddViewChange(){
+      this.todoAddView = true;
+    }
+  }
 };
 </script>

@@ -6,7 +6,7 @@
         v-if="currentView"
         @childEvent="currentViewEvent"
         :task="task"
-      ></ScheduleDetail>
+      />
     </transition>
   </div>
 </template>
@@ -15,7 +15,7 @@
 /* eslint-disable */
 import * as d3 from "d3";
 import depiction from "../static/js/depiction";
-import changeFavicon from "../static/js/changeFavicon"
+import changeFavicon from "../static/js/changeFavicon";
 import gradients from "../assets/gradients";
 import axios from "axios";
 import ScheduleDetail from "./SceduleDetail";
@@ -38,7 +38,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1MzE5NjMwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTIzMzIzMH0.4oXyoyfkZ5kTsTt_fS5ZD0n7v05CFAzORzz52DZ9lbI",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1NDAyMTk1LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTMxNTc5NX0.tjL6dcRxmlqtVk7pNT6mCv9_uTEl9CWGbORc1KS_FfQ",
       },
     };
     axios.get(url, config).then((response) => {
@@ -58,7 +58,6 @@ export default {
       var _this = this; //vueインスタンスのthisを変数として格納
       var date = new Date();
       var dayOfWeek = date.getDay();
-
 
       // create task and set gradient
       for (var i = 0; i < this.customs.length; ++i) {
@@ -99,7 +98,7 @@ export default {
           document.getElementById(id).onclick = function () {
             var clickedNumber = this.id - 1;
             // console.log("クリックしたタスクは" + clickedNumber + "番でよ");
-            _this.currentView = "true";
+            _this.currentView = true;
             _this.task = _this.customs[clickedNumber];
           };
         }
