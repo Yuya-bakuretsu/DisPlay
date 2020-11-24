@@ -7,12 +7,17 @@
           <img src="../assets/img/stick.svg" class="first stick" alt="stick" />
         </div>
         <div class="link">
-          <div class="editText">Add</div>
-          <img src="../assets/img/X.svg" alt="X" class="X" id="X-js" />
+          <div class="editText" v-on:click="postTodo">Add</div>
+          <img
+            src="../assets/img/X.svg"
+            alt="X"
+            class="X"
+            v-on:click="sendTodoAddView"
+          />
         </div>
       </div>
       <div class="field">
-        <h2 class="titleText">title</h2>
+        <input class="titleInputArea" type="text" v-model="title" />
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
@@ -20,7 +25,21 @@
       <h3 class="captionText">Deadline</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
-        <h2 class="dateText">test</h2>
+        <input
+          type="number"
+          min="1"
+          max="12"
+          class="dateInputArea"
+          v-model="month"
+        />
+        <h2 class="dateText">/</h2>
+        <input
+          type="number"
+          min="1"
+          max="31"
+          class="dateInputArea"
+          v-model="date"
+        />
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
@@ -28,7 +47,37 @@
 </template>
 <style src="../static/css/TodoAdd.css"></style>
 <script>
+import axios from "axios";
 export default {
   name: "TodoAdd",
+  data: function () {
+    return {
+      title: "Please Tap me",
+      month: 11,
+      date: 24,
+    };
+  },
+  methods: {
+    sendTodoAddView() {
+      this.$emit("childEvent", false);
+    },
+    postTodo() {
+      let url = "http://127.0.0.1:8000/api/todo/";
+      let config = {
+        headers: {
+          Authorization:
+            "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2MzAyMzUwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjIxNTk1MH0.9w3TE87qHLtaZaS1OPZ_YiRwWctN5IlTMNhx-bTylMg",
+        },
+      };
+      let data = {
+          author: 1,
+          title: "Running",
+          deadline_time: "2020-10-01T11:25:40+09:00",
+      };
+      axios.post(url, data, config).then((response) => {
+        console.log(response);
+      });
+    },
+  },
 };
 </script>

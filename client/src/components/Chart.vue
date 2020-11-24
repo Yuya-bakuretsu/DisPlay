@@ -3,8 +3,8 @@
     <div id="chart"></div>
     <transition>
       <ScheduleDetail
-        v-if="currentView"
-        @childEvent="currentViewEvent"
+        v-if="scheduleDetailView"
+        @childEvent="scheduleDetailViewEvent"
         :task="task"
       />
     </transition>
@@ -29,7 +29,7 @@ export default {
     return {
       customs: [],
       task: [],
-      currentView: false,
+      scheduleDetailView: false,
     };
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
@@ -38,7 +38,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1NDAyMTk1LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTMxNTc5NX0.tjL6dcRxmlqtVk7pNT6mCv9_uTEl9CWGbORc1KS_FfQ",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2MzAyMzUwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjIxNTk1MH0.9w3TE87qHLtaZaS1OPZ_YiRwWctN5IlTMNhx-bTylMg",
       },
     };
     axios.get(url, config).then((response) => {
@@ -98,7 +98,7 @@ export default {
           document.getElementById(id).onclick = function () {
             var clickedNumber = this.id - 1;
             // console.log("クリックしたタスクは" + clickedNumber + "番でよ");
-            _this.currentView = true;
+            _this.scheduleDetailView = true;
             _this.task = _this.customs[clickedNumber];
           };
         }
@@ -107,8 +107,8 @@ export default {
     },
   },
   methods: {
-    currentViewEvent(value) {
-      this.currentView = value;
+    scheduleDetailViewEvent(value) {
+      this.scheduleDetailView = value;
     },
   },
 };

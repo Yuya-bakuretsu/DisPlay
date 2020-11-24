@@ -21,6 +21,26 @@ h3.captionText {
   text-align: left;
   font-weight: 300;
 }
+.titleInputArea{
+  font-family: "Roboto", sans-serif;
+  margin: -10px 0 0 0;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  width: auto;
+  height: auto;
+}
+.dateInputArea{
+  font-family: "Roboto", sans-serif;
+  margin: -14px 0 0 0;
+  font-size: 17px;
+  text-align: left;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  width: auto;
+  height: auto;
+}
 img.stick{
   margin: 0 237px 0 27px;
   vertical-align: top;
@@ -50,11 +70,12 @@ img.X {
 }
 
 .field h2 {
-  margin: -14px 0 0 28px;
   text-align: left;
+  margin: -14px 0 0 0;
 }
 .field {
   display: flex;
+  margin: 0 0 0 29px;
 }
 img.Pen{
   margin: -4px 0 0 5px;

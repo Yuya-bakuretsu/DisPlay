@@ -40,3 +40,33 @@ p.Task_deadline {
   margin: -8px 0 0 3px;
   text-align: left;
 }
+/* TodoAddのアニメーション */
+/* 表示アニメーションをする前のスタイル */
+.v-enter {
+  opacity: 0;
+}
+
+/* 表示アニメーション後のスタイル */
+.v-enter-to {
+  opacity: 1;
+}
+
+/* 表示アニメーション動作中のスタイル */
+.v-enter-active {
+  transition: all 250ms;
+}
+
+/* 非表示アニメーション動作前のスタイル */
+.v-leave {
+  opacity: 1;
+}
+
+/* 非表示アニメーション動作後のスタイル */
+.v-leave-to {
+  opacity: 0;
+}
+
+/* 非表示アニメーション動作中のスタイル */
+.v-leave-active {
+  transition: all 250ms;
+}

@@ -1,6 +1,7 @@
 #chart {
   margin-top: 40px;
 }
+/* ScheduleDetailのアニメーション */
 /* 表示アニメーションをする前のスタイル */
 .v-enter {
   opacity: 0;

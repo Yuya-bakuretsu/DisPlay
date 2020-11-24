@@ -1,12 +1,14 @@
 <template>
   <div>
-    <TodoAdd v-if="todoAddView" />
+    <transition>
+      <TodoAdd v-if="todoAddView" @childEvent="todoAddViewEvent" />
+    </transition>
     <div class="Todo_menu">
       <div class="Menu_right">
         <h3>Todolist</h3>
       </div>
       <div class="Menu_left">
-        <button class="Landscape_button">
+        <button class="Landscape_button" v-on:click="todoAddViewChange">
           <div class="button_text">Add</div></button
         ><img
           class="Trashcan"
@@ -24,7 +26,7 @@
             src="../assets/img/Play.svg"
             alt="Play"
           /></button
-        ><button class="Circle_button Check" v-on:click="todoAddViewChange">
+        ><button class="Circle_button Check">
           <img src="../assets/img/Check.svg" alt="check" />
         </button>
         <p class="Task_deadline">Deadline {{ todo.deadline_time }}</p>
@@ -54,7 +56,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1NDAyMTk1LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTMxNTc5NX0.tjL6dcRxmlqtVk7pNT6mCv9_uTEl9CWGbORc1KS_FfQ",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2MzAyMzUwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjIxNTk1MH0.9w3TE87qHLtaZaS1OPZ_YiRwWctN5IlTMNhx-bTylMg",
       },
     };
     axios.get(url, config).then((response) => {
@@ -80,9 +82,12 @@ export default {
     });
   },
   methods: {
-    todoAddViewChange(){
+    todoAddViewChange() {
       this.todoAddView = true;
-    }
-  }
+    },
+    todoAddViewEvent(value) {
+      this.todoAddView = value;
+    },
+  },
 };
 </script>
