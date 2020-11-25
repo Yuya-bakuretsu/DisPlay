@@ -17,7 +17,12 @@
         </div>
       </div>
       <div class="field">
-        <input class="titleInputArea" type="text" v-model="title" />
+        <input
+          class="titleInputArea"
+          type="text"
+          v-model="title"
+          placeholder="enter title"
+        />
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
     </div>
@@ -52,7 +57,7 @@ export default {
   name: "TodoAdd",
   data: function () {
     return {
-      title: "Please Tap me",
+      title: "",
       month: 11,
       date: 24,
     };
@@ -70,13 +75,15 @@ export default {
         },
       };
       let data = {
-          author: 1,
-          title: "Running",
-          deadline_time: "2020-10-01T11:25:40+09:00",
+        author: 1,
+        title: this.title,
+        deadline_time:
+          "2020-" + this.month + "-" + this.date + "T11:15:00+09:00",
       };
       axios.post(url, data, config).then((response) => {
         console.log(response);
       });
+      this.$emit("notificationPost");
     },
   },
 };
