@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from rest_framework import generics, permissions
 from .models import Custom, Todo
 from .serializers import UserSerializer, TodoSerializer, CustomSerializer
-
+import datetime
 
 class UserList(generics.ListAPIView):
     """View to list all users"""
@@ -45,6 +45,11 @@ class TodoListCreate(generics.ListCreateAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
     permission_classes = (permissions.IsAuthenticated, )
+
+    def get_queryset(self):
+
+        user = self.request.user
+        return Todo.objects.filter(author=user, start_time__lte=datetime.datetime.now(), end_time__gte=datetime.datetime.now())
 
 
 class TodoRetrieveUpdate(generics.RetrieveUpdateAPIView):
