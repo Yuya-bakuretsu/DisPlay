@@ -1,3 +1,16 @@
-h1.headerTitle{
+header {
   margin: 35px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+h1.headerTitle {
+  margin: 0 142px 0 0;
+}
+img.arrow {
+  margin: 7px 0 0 38px;
+}
+h3.customOptionTitle{
+  font-weight: 400;
+  text-align: left;
+  margin: 43px 0 0 20px;
 }

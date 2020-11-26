@@ -65,7 +65,7 @@ export default {
   },
   computed: {
     inputWidth() {
-      var width = this.title.length * 11;
+      var width = this.title.length * 10.4;
       if (width <= 88) {
         width = 88;
       }

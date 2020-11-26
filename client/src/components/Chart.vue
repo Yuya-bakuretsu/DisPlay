@@ -15,7 +15,7 @@
 /* eslint-disable */
 import * as d3 from "d3";
 import depiction from "../static/js/depiction";
-import changeFavicon from "../static/js/changeFavicon";
+import { changeFavicon } from "../static/js/changeFavicon";
 import gradients from "../assets/gradients";
 import axios from "axios";
 import ScheduleDetail from "./SceduleDetail";
@@ -103,7 +103,7 @@ export default {
           };
         }
       }
-      changeFavicon.changeFavicon();
+      changeFavicon();
     },
   },
   methods: {

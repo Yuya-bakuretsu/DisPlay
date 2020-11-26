@@ -21,7 +21,7 @@ h3.captionText {
   text-align: left;
   font-weight: 300;
 }
-.titleInputArea{
+input.titleInputArea{
   font-family: "Roboto", sans-serif;
   margin: -10px 0 0 0;
   font-size: 15px;
@@ -30,7 +30,7 @@ h3.captionText {
   letter-spacing: 0.15em;
   height: auto;
 }
-.dateInputArea{
+input.dateInputArea{
   font-family: "Roboto", sans-serif;
   margin: -14px 0 0 0;
   font-size: 17px;

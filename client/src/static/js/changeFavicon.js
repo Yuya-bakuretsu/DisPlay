@@ -51,4 +51,4 @@ const changeFavicon = function () {
   };
 };
 
-export default { changeFavicon };
+export { changeFavicon };
