@@ -7,12 +7,11 @@
           <img src="../assets/img/stick.svg" class="first stick" alt="stick" />
         </div>
         <div class="link">
-          <div class="editText">Edit</div>
           <img
             src="../assets/img/X.svg"
             alt="X"
             class="X"
-            v-on:click="sendScheduleDetailView"
+            @click="sendScheduleDetailView"
           />
         </div>
       </div>
@@ -27,13 +26,13 @@
         <h2 class="dateText">{{ task.start_time }}~{{ task.end_time }}</h2>
       </div>
     </div>
-    <div class="wrap">
+    <!-- <div class="wrap">
       <h3 class="date captionText">Memo</h3>
       <img src="../assets/img/stick.svg" class="stick" alt="stick" />
       <div class="field">
         <h2 class="memoText">{{ task.memo }}</h2>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <style src="../static/css/scheduleDetail.css"></style>
