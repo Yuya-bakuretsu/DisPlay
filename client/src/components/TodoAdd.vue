@@ -22,6 +22,7 @@
           type="text"
           v-model="title"
           placeholder="enter title"
+          :style="{ width: inputWidth }"
         />
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
@@ -61,6 +62,16 @@ export default {
       month: 11,
       date: 24,
     };
+  },
+  computed: {
+    inputWidth() {
+      var width = this.title.length * 11;
+      if (width <= 88) {
+        width = 88;
+      }
+      var inputWidth = width + "px";
+      return inputWidth;
+    },
   },
   methods: {
     sendTodoAddView() {
