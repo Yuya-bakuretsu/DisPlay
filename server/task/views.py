@@ -49,7 +49,7 @@ class TodoListCreate(generics.ListCreateAPIView):
     def get_queryset(self):
 
         user = self.request.user
-        return Todo.objects.filter(author=user, start_time__lte=datetime.datetime.now(), end_time__gte=datetime.datetime.now())
+        return Todo.objects.filter(author=user)
 
 
 class TodoRetrieveUpdate(generics.RetrieveUpdateAPIView):
