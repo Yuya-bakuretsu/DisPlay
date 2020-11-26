@@ -12,8 +12,7 @@
             src="../assets/img/X.svg"
             alt="X"
             class="X"
-            id="X-js"
-            v-on:click="sendCurrentView"
+            v-on:click="sendScheduleDetailView"
           />
         </div>
       </div>
@@ -43,7 +42,7 @@ export default {
   name: "ScheduleDetail",
   props: ["task"],
   methods: {
-    sendCurrentView() {
+    sendScheduleDetailView() {
       this.$emit("childEvent", false);
     },
   },

@@ -3,10 +3,10 @@
     <div id="chart"></div>
     <transition>
       <ScheduleDetail
-        v-if="currentView"
-        @childEvent="currentViewEvent"
+        v-if="scheduleDetailView"
+        @childEvent="scheduleDetailViewEvent"
         :task="task"
-      ></ScheduleDetail>
+      />
     </transition>
   </div>
 </template>
@@ -15,7 +15,7 @@
 /* eslint-disable */
 import * as d3 from "d3";
 import depiction from "../static/js/depiction";
-import changeFavicon from "../static/js/changeFavicon"
+import changeFavicon from "../static/js/changeFavicon";
 import gradients from "../assets/gradients";
 import axios from "axios";
 import ScheduleDetail from "./SceduleDetail";
@@ -29,7 +29,7 @@ export default {
     return {
       customs: [],
       task: [],
-      currentView: false,
+      scheduleDetailView: false,
     };
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
@@ -38,7 +38,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA1MzE5NjMwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNTIzMzIzMH0.4oXyoyfkZ5kTsTt_fS5ZD0n7v05CFAzORzz52DZ9lbI",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2MzAyMzUwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjIxNTk1MH0.9w3TE87qHLtaZaS1OPZ_YiRwWctN5IlTMNhx-bTylMg",
       },
     };
     axios.get(url, config).then((response) => {
@@ -58,7 +58,6 @@ export default {
       var _this = this; //vueインスタンスのthisを変数として格納
       var date = new Date();
       var dayOfWeek = date.getDay();
-
 
       // create task and set gradient
       for (var i = 0; i < this.customs.length; ++i) {
@@ -99,7 +98,7 @@ export default {
           document.getElementById(id).onclick = function () {
             var clickedNumber = this.id - 1;
             // console.log("クリックしたタスクは" + clickedNumber + "番でよ");
-            _this.currentView = "true";
+            _this.scheduleDetailView = true;
             _this.task = _this.customs[clickedNumber];
           };
         }
@@ -108,8 +107,8 @@ export default {
     },
   },
   methods: {
-    currentViewEvent(value) {
-      this.currentView = value;
+    scheduleDetailViewEvent(value) {
+      this.scheduleDetailView = value;
     },
   },
 };
