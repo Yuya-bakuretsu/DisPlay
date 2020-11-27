@@ -14,7 +14,7 @@
 <script>
 /* eslint-disable */
 import * as d3 from "d3";
-import depiction from "../static/js/depiction";
+import depiction from "../static/js/depictionChart";
 import { changeFavicon } from "../static/js/changeFavicon";
 import gradients from "../assets/gradients";
 import axios from "axios";
