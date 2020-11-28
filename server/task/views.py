@@ -23,7 +23,7 @@ class UserCreate(generics.CreateAPIView):
     permission_classes = (permissions.IsAdminUser, )
 
 
-class UserRetrieveUpdate(generics.RetrieveUpdateAPIView):
+class UserRetrieveUpdate(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve a user or update user information.
     Accepts GET and PUT requests and the record id must be provided in the request """
     queryset = User.objects.all()
@@ -42,7 +42,7 @@ class CustomListCreate(generics.ListCreateAPIView):
         return Todo.objects.filter(author=user)
 
 
-class CustomRetrieveUpdate(generics.RetrieveUpdateAPIView):
+class CustomRetrieveUpdate(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve and update Custom information"""
     queryset = Custom.objects.all()
     serializer_class = CustomSerializer
@@ -60,7 +60,7 @@ class TodoListCreate(generics.ListCreateAPIView):
         return Todo.objects.filter(author=user)
 
 
-class TodoRetrieveUpdate(generics.RetrieveUpdateAPIView):
+class TodoRetrieveUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
     permission_classes = (permissions.IsAuthenticated, )
