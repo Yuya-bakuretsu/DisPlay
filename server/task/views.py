@@ -4,11 +4,16 @@ from .models import Custom, Todo
 from .serializers import UserSerializer, TodoSerializer, CustomSerializer
 import datetime
 
+
 class UserList(generics.ListAPIView):
     """View to list all users"""
     queryset = User.objects.all().order_by('first_name')
     serializer_class = UserSerializer
     permission_classed = (permissions.IsAuthenticated, )
+
+    def get_queryset(self):
+        user = self.request.user
+        return Todo.objects.filter(author=user)
 
 
 class UserCreate(generics.CreateAPIView):
@@ -32,6 +37,10 @@ class CustomListCreate(generics.ListCreateAPIView):
     serializer_class = CustomSerializer
     permission_classes = (permissions.IsAuthenticated, )
 
+    def get_queryset(self):
+        user = self.request.user
+        return Todo.objects.filter(author=user)
+
 
 class CustomRetrieveUpdate(generics.RetrieveUpdateAPIView):
     """Retrieve and update Custom information"""
@@ -47,7 +56,6 @@ class TodoListCreate(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticated, )
 
     def get_queryset(self):
-
         user = self.request.user
         return Todo.objects.filter(author=user)
 
