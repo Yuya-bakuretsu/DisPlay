@@ -1,16 +1,16 @@
 const changeFavicon = function () {
-  var svg = document.querySelector("svg");
+  let svg = document.querySelector("svg");
 
-  var svgData = new XMLSerializer().serializeToString(svg);
+  let svgData = new XMLSerializer().serializeToString(svg);
 
-  var canvas = document.createElement("canvas");
+  let canvas = document.createElement("canvas");
 
   canvas.width = svg.width.baseVal.value;
   canvas.height = svg.height.baseVal.value;
 
-  var ctx = canvas.getContext("2d");
+  let ctx = canvas.getContext("2d");
 
-  var image = new Image();
+  let image = new Image();
   // console.log(svgData);
 
   // svgDataをURIデータに変換後base64データに変換し、imageのsrcの属性値に設定
@@ -18,14 +18,14 @@ const changeFavicon = function () {
     "data:image/svg+xml;charset=utf-8;base64," +
     btoa(unescape(encodeURIComponent(svgData)));
 
-  var docHead = document.getElementsByTagName("head")[0];
+  let docHead = document.getElementsByTagName("head")[0];
 
   function change(iconURL) {
     addLink(iconURL, "icon");
   }
 
   function addLink(iconURL, relValue) {
-    var link = document.createElement("link");
+    let link = document.createElement("link");
     link.type = "image/png";
     link.rel = relValue;
     link.href = iconURL;
@@ -34,9 +34,9 @@ const changeFavicon = function () {
   }
 
   function removeLinkIfExists(relValue) {
-    var links = docHead.getElementsByTagName("link");
-    for (var i = 0; i < links.length; i++) {
-      var link = links[i];
+    let links = docHead.getElementsByTagName("link");
+    for (let i = 0; i < links.length; i++) {
+      let link = links[i];
       if (link.type == "image/png" && link.rel == relValue) {
         this.docHead.removeChild(link);
         return;

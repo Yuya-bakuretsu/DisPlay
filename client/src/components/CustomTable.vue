@@ -22,6 +22,7 @@
 }
 </style>
 <script>
+/* eslint-disable */
 import depiction from "../static/js/depictionCustomTable";
 import gradients from "../assets/gradients";
 import axios from "axios";
@@ -38,7 +39,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NjQ4MjM2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjU2MTgzNn0.HVfje0Xj2XZ5KpGPxBhwC9gBMIM2ZKJP9zwXSmFMSnA",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NzM4NzMxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjY1MjMzMX0.GD1J9XIXLJmfSir_UbXNu9Co4ZwDZjyFIFYr5g0sTE4",
       },
     };
     axios.get(url, config).then((response) => {
@@ -49,23 +50,37 @@ export default {
     depiction.svg();
     depiction.createGradient("#FFFFFF", "#F8F8F8", "baseGradient");
     depiction.base();
-    // data for test
-    var custom = [
-      {
-        name: "sleep",
-        start_time: "23:00:00",
-        end_time: "05:00:00",
-        repeat_flug: 1111111,
-      },
-    ];
-    var number = custom[0].name.charCodeAt(0);
-    var code = number.toString().split("").pop();
-    depiction.createGradient(
-      gradients[code].color,
-      gradients[code].color1,
-      "customGradient" + code
-    );
-    depiction.custom(code);
+  },
+  watch: {
+    customs() {
+      let i;
+      for (i = 0; i < this.customs.length; i++) {
+        for (let j = 0; j < this.customs[i].repeat_flag.length; j++) {
+          if (this.customs[i].repeat_flag[j]) {
+            let number = this.customs[i].title.charCodeAt(0);
+            let code = number.toString().split("").pop();
+            let startTime = this.customs[i].start_time.split(":");
+            startTime.pop();
+            let endTime = this.customs[i].end_time.split(":");
+            endTime.pop();
+            // console.log("Starttime is " + startTime);
+            // console.log("End time is " + endTime);
+            depiction.createGradient(
+              gradients[code].color,
+              gradients[code].color1,
+              "customGradient" + code
+            );
+            depiction.custom(
+              j + 1,
+              startTime,
+              endTime,
+              this.customs[i].title,
+              code
+            );
+          }
+        }
+      }
+    },
   },
 };
 </script>

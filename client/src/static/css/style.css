@@ -64,7 +64,7 @@ button:active {
   width: 103px;
   height: 29px;
   color: #ffffff;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 400;
 }
 button:active.Login {
@@ -78,7 +78,7 @@ button:active.Login {
   width: 103px;
   height: 29px;
   color: #ffffff;
-  font-size: 9px;
+  font-size: 11px;
 }
 button:active.Logout {
   box-shadow: 1.5px 1.5px 3px transparent, -1.5px -1.5px 3px transparent,

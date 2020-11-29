@@ -60,25 +60,25 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NjQ4MjM2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjU2MTgzNn0.HVfje0Xj2XZ5KpGPxBhwC9gBMIM2ZKJP9zwXSmFMSnA",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NzM4NzMxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjY1MjMzMX0.GD1J9XIXLJmfSir_UbXNu9Co4ZwDZjyFIFYr5g0sTE4",
       },
     };
     axios.get(url, config).then((response) => {
       // todosのデータ整形
-      for (var i = 0; i < response.data.length; i++) {
-        var data = response.data;
-        var splitDate = data[i].deadline_time.split("T");
+      let data = response.data;
+      for (let i = 0; i < response.data.length; i++) {
+        let splitDate = data[i].deadline_time.split("T");
 
-        var yearMonthDay = splitDate[0].split("-");
-        var year = yearMonthDay[0];
-        var month = Number(yearMonthDay[1]);
-        var day = Number(yearMonthDay[2]);
+        let yearMonthDay = splitDate[0].split("-");
+        let year = yearMonthDay[0];
+        let month = Number(yearMonthDay[1]);
+        let day = Number(yearMonthDay[2]);
 
-        var globalTime = splitDate[1].split("+");
-        var localTime = globalTime[0].split(":");
-        var hour = localTime[0];
-        var minute = localTime[1];
-        var second = localTime[2];
+        let globalTime = splitDate[1].split("+");
+        let localTime = globalTime[0].split(":");
+        let hour = localTime[0];
+        let minute = localTime[1];
+        let second = localTime[2];
 
         data[i].deadline_time = month + "/" + day;
       }
@@ -97,25 +97,25 @@ export default {
       let config = {
         headers: {
           Authorization:
-            "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NDg0MTE5LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjM5NzcxOX0.65S5gbkmN87O3dGM8DydZe5XDHygeyG1mMCwHkGP-F4",
+            "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NzM4NzMxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjY1MjMzMX0.GD1J9XIXLJmfSir_UbXNu9Co4ZwDZjyFIFYr5g0sTE4",
         },
       };
       axios.get(url, config).then((response) => {
         // todosのデータ整形
-        for (var i = 0; i < response.data.length; i++) {
-          var data = response.data;
-          var splitDate = data[i].deadline_time.split("T");
+        for (let i = 0; i < response.data.length; i++) {
+          let data = response.data;
+          let splitDate = data[i].deadline_time.split("T");
 
-          var yearMonthDay = splitDate[0].split("-");
-          var year = yearMonthDay[0];
-          var month = Number(yearMonthDay[1]);
-          var day = Number(yearMonthDay[2]);
+          let yearMonthDay = splitDate[0].split("-");
+          let year = yearMonthDay[0];
+          let month = Number(yearMonthDay[1]);
+          let day = Number(yearMonthDay[2]);
 
-          var globalTime = splitDate[1].split("+");
-          var localTime = globalTime[0].split(":");
-          var hour = localTime[0];
-          var minute = localTime[1];
-          var second = localTime[2];
+          let globalTime = splitDate[1].split("+");
+          let localTime = globalTime[0].split(":");
+          let hour = localTime[0];
+          let minute = localTime[1];
+          let second = localTime[2];
 
           data[i].deadline_time = month + "/" + day;
         }

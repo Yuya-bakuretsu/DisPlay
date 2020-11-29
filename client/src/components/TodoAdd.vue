@@ -65,11 +65,11 @@ export default {
   },
   computed: {
     inputWidth() {
-      var width = this.title.length * 10.4;
+      let width = this.title.length * 10.4;
       if (width <= 88) {
         width = 88;
       }
-      var inputWidth = width + "px";
+      let inputWidth = width + "px";
       return inputWidth;
     },
   },

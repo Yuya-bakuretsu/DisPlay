@@ -11,8 +11,10 @@
       <button class="Landscape_button Resseting_button">Resseting</button>
     </div>
     <CustomTable />
-    <h3 class="logoutTitle">Logout</h3>
-    <button class="Logout Landscape_button">Logout</button>
+    <div class="logoutSection">
+      <h3 class="logoutTitle">Logout</h3>
+      <button class="Logout Landscape_button">Logout</button>
+    </div>
   </div>
 </template>
 <style src="../static/css/Option.css"></style>
