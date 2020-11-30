@@ -14,8 +14,8 @@
 <script>
 /* eslint-disable */
 import * as d3 from "d3";
-import depiction from "../static/js/depiction";
-import changeFavicon from "../static/js/changeFavicon";
+import depiction from "../static/js/depictionChart";
+import { changeFavicon } from "../static/js/changeFavicon";
 import gradients from "../assets/gradients";
 import axios from "axios";
 import ScheduleDetail from "./SceduleDetail";
@@ -38,7 +38,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2MzAyMzUwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjIxNTk1MH0.9w3TE87qHLtaZaS1OPZ_YiRwWctN5IlTMNhx-bTylMg",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NzM4NzMxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjY1MjMzMX0.GD1J9XIXLJmfSir_UbXNu9Co4ZwDZjyFIFYr5g0sTE4",
       },
     };
     axios.get(url, config).then((response) => {
@@ -55,29 +55,29 @@ export default {
   },
   watch: {
     customs: function () {
-      var _this = this; //vueインスタンスのthisを変数として格納
-      var date = new Date();
-      var dayOfWeek = date.getDay();
+      let _this = this; //vueインスタンスのthisを変数として格納
+      let date = new Date();
+      let dayOfWeek = date.getDay();
 
       // create task and set gradient
-      for (var i = 0; i < this.customs.length; ++i) {
+      for (let i = 0; i < this.customs.length; ++i) {
         // カスタムの曜日を判断
-        var repeatFlag = this.customs[i].repeat_flag.split("");
+        let repeatFlag = this.customs[i].repeat_flag.split("");
         if (repeatFlag[dayOfWeek]) {
-          var number = this.customs[i].title.charCodeAt(0);
-          var code = number.toString().split("").pop();
+          let number = this.customs[i].title.charCodeAt(0);
+          let code = number.toString().split("").pop();
 
           //start_timeとend_timeの型整形
-          var start = this.customs[i].start_time.split(":");
+          let start = this.customs[i].start_time.split(":");
 
-          var end = this.customs[i].end_time.split(":");
+          let end = this.customs[i].end_time.split(":");
 
-          var startTime = (start[0] + start[1] * 0.166) * 0.1;
+          let startTime = (start[0] + start[1] * 0.166) * 0.1;
 
-          var endTime = (end[0] + end[1] * 0.166) * 0.1;
+          let endTime = (end[0] + end[1] * 0.166) * 0.1;
 
-          var displayStart = Number(start[0]) + ":" + start[1];
-          var displayEnd = Number(end[0]) + ":" + end[1];
+          let displayStart = Number(start[0]) + ":" + start[1];
+          let displayEnd = Number(end[0]) + ":" + end[1];
           this.customs[i].start_time = displayStart;
           this.customs[i].end_time = displayEnd;
 
@@ -91,19 +91,19 @@ export default {
             "taskGradient" + code
           );
 
-          var id = this.customs[i].id;
+          let id = this.customs[i].id;
 
           depiction.createTask(startTime, endTime, code, id);
 
           document.getElementById(id).onclick = function () {
-            var clickedNumber = this.id - 1;
+            let clickedNumber = this.id - 1;
             // console.log("クリックしたタスクは" + clickedNumber + "番でよ");
             _this.scheduleDetailView = true;
             _this.task = _this.customs[clickedNumber];
           };
         }
       }
-      changeFavicon.changeFavicon();
+      changeFavicon();
     },
   },
   methods: {

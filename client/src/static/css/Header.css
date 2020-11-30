@@ -4,8 +4,8 @@
   justify-content: space-between;
 }
 h1.Headertitle{
-  margin-left: 138px;
+  margin:0 0 0 138px;
 }
 img.Gear{
-  margin-right: 27px;
+  margin:6.5px 27px 0 0;
 }

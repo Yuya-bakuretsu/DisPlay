@@ -7,12 +7,12 @@
           <img src="../assets/img/stick.svg" class="first stick" alt="stick" />
         </div>
         <div class="link">
-          <div class="editText" v-on:click="postTodo">Add</div>
+          <div class="editText" @click="postTodo">Add</div>
           <img
             src="../assets/img/X.svg"
             alt="X"
             class="X"
-            v-on:click="sendTodoAddView"
+            @click="sendTodoAddView"
           />
         </div>
       </div>
@@ -22,6 +22,7 @@
           type="text"
           v-model="title"
           placeholder="enter title"
+          :style="{ width: inputWidth }"
         />
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
@@ -62,6 +63,16 @@ export default {
       date: 24,
     };
   },
+  computed: {
+    inputWidth() {
+      let width = this.title.length * 10.4;
+      if (width <= 88) {
+        width = 88;
+      }
+      let inputWidth = width + "px";
+      return inputWidth;
+    },
+  },
   methods: {
     sendTodoAddView() {
       this.$emit("childEvent", false);
@@ -71,7 +82,7 @@ export default {
       let config = {
         headers: {
           Authorization:
-            "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2MzAyMzUwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjIxNTk1MH0.9w3TE87qHLtaZaS1OPZ_YiRwWctN5IlTMNhx-bTylMg",
+            "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NDg0MTE5LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjM5NzcxOX0.65S5gbkmN87O3dGM8DydZe5XDHygeyG1mMCwHkGP-F4",
         },
       };
       let data = {

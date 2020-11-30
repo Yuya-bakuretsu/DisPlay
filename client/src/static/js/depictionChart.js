@@ -3,8 +3,8 @@ const d3 = require("d3");
 
 // create canvas
 const svg = function () {
-  var w = 307;
-  var h = 307;
+  let w = 307;
+  let h = 307;
   d3.select("#chart")
     .append("svg")
     .attr("width", w)
@@ -15,9 +15,9 @@ const svg = function () {
 
 // create gradient
 const createGradient = function (color, color1, id) {
-  var defs = d3.select("g").append("defs");
+  let defs = d3.select("g").append("defs");
 
-  var gradient = defs
+  let gradient = defs
     .append("linearGradient")
     .attr("id", id)
     .attr("x1", "0%")
@@ -41,9 +41,9 @@ const createGradient = function (color, color1, id) {
 
 // create shadow
 const createGrooveShadow = function () {
-  var defs = d3.select("svg").append("defs");
+  let defs = d3.select("svg").append("defs");
 
-  var filter = defs
+  let filter = defs
     .append("filter")
     .attr("id", "insetShadow")
     .attr("x", "-50%")
@@ -85,9 +85,9 @@ const createGrooveShadow = function () {
 };
 
 const createDropShadow = function () {
-  var defs = d3.select("svg").append("defs");
+  let defs = d3.select("svg").append("defs");
 
-  var filter = defs.append("filter").attr("id", "dropShadow");
+  let filter = defs.append("filter").attr("id", "dropShadow");
 
   filter
     .append("feGaussianBlur")
@@ -100,7 +100,7 @@ const createDropShadow = function () {
     .attr("type", "linear")
     .attr("slope", "0.15");
 
-  var feMerge = filter.append("feMerge");
+  let feMerge = filter.append("feMerge");
 
   feMerge.append("feMergeNode");
   feMerge.append("feMergeNode").attr("in", "SourceGraphic");
@@ -108,18 +108,18 @@ const createDropShadow = function () {
 
 // create groove
 const createGroove = function () {
-  var w = 307,
+  let w = 307,
     h = 307;
-  var outerRadius = w / 2 - 30;
-  var innerRadius = outerRadius - 60;
-  var arcBackground = d3
+  let outerRadius = w / 2 - 30;
+  let innerRadius = outerRadius - 60;
+  let arcBackground = d3
     .arc()
     .innerRadius(innerRadius)
     .outerRadius(outerRadius)
     .startAngle(0)
     .endAngle(2 * Math.PI);
 
-  var pathBackground = d3
+  let pathBackground = d3
     .select("g")
     .append("path")
     .attr("d", arcBackground)
@@ -129,21 +129,21 @@ const createGroove = function () {
 
 // create outer and center
 const createClock = function () {
-  var circle = d3
+  let circle = d3
     .select("g")
     .append("circle")
     .attr("r", "63.5")
     .style("fill", "url(#lightGradient)");
 
-  var centerCircle = d3
+  let centerCircle = d3
     .select("g")
     .append("circle")
     .attr("r", "7.5")
     .style("fill", "#1f242a");
 
-  var nowTime = new Date();
+  let nowTime = new Date();
 
-  var pointer = d3
+  let pointer = d3
     .select("g")
     .append("rect")
     .attr("width", 6)
@@ -155,14 +155,14 @@ const createClock = function () {
     .attr("y", -45)
     .attr("transform", "rotate(" + nowTime.getHours() * 15 + " )");
 
-  var outerEdgeBackground = d3
+  let outerEdgeBackground = d3
     .arc()
     .innerRadius(153.5)
     .outerRadius(123.5)
     .startAngle(0)
     .endAngle(2 * Math.PI);
 
-  var outerEdgepath = d3
+  let outerEdgepath = d3
     .select("g")
     .append("path")
     .attr("d", outerEdgeBackground)
@@ -171,18 +171,18 @@ const createClock = function () {
 
 // create task
 const createTask = function (startTime, endTime, code, id) {
-  var w = 307,
+  let w = 307,
     h = 307;
-  var outerRadius = w / 2 - 30;
-  var innerRadius = outerRadius - 60;
-  var arcForeground = d3
+  let outerRadius = w / 2 - 30;
+  let innerRadius = outerRadius - 60;
+  let arcForeground = d3
     .arc()
     .innerRadius(innerRadius)
     .outerRadius(outerRadius)
     .startAngle(((2 * Math.PI) / 24) * startTime)
     .endAngle(((2 * Math.PI) / 24) * endTime);
 
-  var pathForeground = d3
+  let pathForeground = d3
     .select("g")
     .append("path")
     .style("fill", "url(#taskGradient" + code + ")")

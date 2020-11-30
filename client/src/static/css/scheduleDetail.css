@@ -1,14 +1,14 @@
 .scheduleDetail {
   opacity: 1;
   position: fixed;
-  top: 100px;
+  top: 80px;
   margin: 100px 12px 0 12px;
   background: linear-gradient(30deg, #fdfdfd, #fcfcfc);
   box-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
   border-radius: 14px;
   width: 351px;
-  height: 346px;
+  height: 240px;
   transition: opacity 0.5s,top 0.7s ease-out;
 }
 .detailHeader {
