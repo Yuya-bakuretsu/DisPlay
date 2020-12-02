@@ -17,8 +17,8 @@ import * as d3 from "d3";
 import depiction from "../static/js/depictionChart";
 import { changeFavicon } from "../static/js/changeFavicon";
 import gradients from "../assets/gradients";
-import axios from "axios";
 import ScheduleDetail from "./SceduleDetail";
+import { store, actions } from "../store/store";
 
 export default {
   name: "Chart",
@@ -27,24 +27,16 @@ export default {
   },
   data: function () {
     return {
-      customs: [],
       task: [],
       scheduleDetailView: false,
     };
   },
-  //TODO 401errorが出るたびにtokenを取得し直す機能を追加
-  created() {
-    let url = "http://127.0.0.1:8000/api/customs";
-    let config = {
-      headers: {
-        Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NzM4NzMxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjY1MjMzMX0.GD1J9XIXLJmfSir_UbXNu9Co4ZwDZjyFIFYr5g0sTE4",
-      },
-    };
-    axios.get(url, config).then((response) => {
-      this.customs = response.data;
-    });
+  computed: {
+    customs() {
+      return store.customs;
+    },
   },
+  //TODO 401errorが出るたびにtokenを取得し直す機能を追加
   mounted() {
     depiction.svg();
     depiction.createGradient("#fbfbff", "#ebebec", "lightGradient");
@@ -52,22 +44,24 @@ export default {
     depiction.createDropShadow();
     depiction.createGroove();
     depiction.createClock();
+    actions.getCustoms();
   },
   watch: {
     customs: function () {
-      let _this = this; //vueインスタンスのthisを変数として格納
+      //set vue instance as
+      let _this = this;
       let date = new Date();
       let dayOfWeek = date.getDay();
 
       // create task and set gradient
       for (let i = 0; i < this.customs.length; ++i) {
-        // カスタムの曜日を判断
+        // Judge Week days
         let repeatFlag = this.customs[i].repeat_flag.split("");
         if (repeatFlag[dayOfWeek]) {
           let number = this.customs[i].title.charCodeAt(0);
           let code = number.toString().split("").pop();
 
-          //start_timeとend_timeの型整形
+          //arrange start_time and end_time
           let start = this.customs[i].start_time.split(":");
 
           let end = this.customs[i].end_time.split(":");

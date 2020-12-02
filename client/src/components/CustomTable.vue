@@ -39,7 +39,7 @@ export default {
     let config = {
       headers: {
         Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NzM4NzMxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjY1MjMzMX0.GD1J9XIXLJmfSir_UbXNu9Co4ZwDZjyFIFYr5g0sTE4",
+          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2OTg0NDU2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjg5ODA1Nn0.meTh4-bDYqUsyx_tzrcTX5fSAyuosJGk7jf_DWU6_Xc",
       },
     };
     axios.get(url, config).then((response) => {
