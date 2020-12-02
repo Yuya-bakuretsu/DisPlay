@@ -31,8 +31,14 @@ const actions = {
   postTodo(data) {
     let url = "http://127.0.0.1:8000/api/todo/";
     axios.post(url, data, config).then((response) => {
-      console.log(response);
+      console.log(response); 
     });
+  },
+  deleteTodo(id){
+    let url = "http://127.0.0.1:8000/api/todo/" + id;
+    axios.delete(url,config).then((response)=>{
+      console.log(response)
+    })
   },
   getCustoms() {
     let url = "http://127.0.0.1:8000/api/customs";

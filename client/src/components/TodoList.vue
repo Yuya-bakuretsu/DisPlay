@@ -30,7 +30,7 @@
             src="../assets/img/Play.svg"
             alt="Play"
           /></button
-        ><button class="Circle_button Check">
+        ><button class="Circle_button Check" @click="deleteTodo(todo.id)">
           <img src="../assets/img/Check.svg" alt="check" />
         </button>
         <p class="Task_deadline">Deadline {{ todo.displayDate }}</p>
@@ -74,6 +74,10 @@ export default {
       actions.getTodo();
       this.todoAddView = false;
     },
+    deleteTodo(id){
+      actions.deleteTodo(id);
+      actions.getTodo();
+    }
   },
 };
 </script>
