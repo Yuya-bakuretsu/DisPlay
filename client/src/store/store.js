@@ -1,17 +1,19 @@
 /* eslint-disable */
 import Vue from "vue";
 import axios from "axios";
+
+let config = {
+  headers: {
+    Authorization:
+      "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2OTg0NDU2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjg5ODA1Nn0.meTh4-bDYqUsyx_tzrcTX5fSAyuosJGk7jf_DWU6_Xc",
+  },
+};
+
 const store = Vue.observable({ customs: {}, todos: {} });
 
 const actions = {
   getTodo() {
     let url = "http://127.0.0.1:8000/api/todo";
-    let config = {
-      headers: {
-        Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2OTg0NDU2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjg5ODA1Nn0.meTh4-bDYqUsyx_tzrcTX5fSAyuosJGk7jf_DWU6_Xc",
-      },
-    };
     axios.get(url, config).then((response) => {
       // arrange todos data
       let data;
@@ -26,18 +28,18 @@ const actions = {
       store.todos = data;
     });
   },
-  postTodo() {},
+  postTodo(data) {
+    let url = "http://127.0.0.1:8000/api/todo/";
+    axios.post(url, data, config).then((response) => {
+      console.log(response);
+    });
+  },
   getCustoms() {
     let url = "http://127.0.0.1:8000/api/customs";
-    let config = {
-      headers: {
-        Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2OTg0NDU2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjg5ODA1Nn0.meTh4-bDYqUsyx_tzrcTX5fSAyuosJGk7jf_DWU6_Xc",
-      },
-    };
     axios.get(url, config).then((response) => {
       store.customs = response.data;
     });
   },
 };
+
 export { store, actions };
