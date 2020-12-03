@@ -44,7 +44,7 @@
           min="1"
           max="31"
           class="dateInputArea"
-          v-model="date"
+          v-model="day"
         />
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
@@ -53,14 +53,18 @@
 </template>
 <style src="../static/css/TodoAdd.css"></style>
 <script>
-import axios from "axios";
+import { actions } from "../store/store";
+
 export default {
   name: "TodoAdd",
   data: function () {
+    let date = new Date();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
     return {
       title: "",
-      month: 11,
-      date: 24,
+      month: month,
+      day: day,
     };
   },
   computed: {
@@ -78,22 +82,13 @@ export default {
       this.$emit("childEvent", false);
     },
     postTodo() {
-      let url = "http://127.0.0.1:8000/api/todo/";
-      let config = {
-        headers: {
-          Authorization:
-            "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2NDg0MTE5LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjM5NzcxOX0.65S5gbkmN87O3dGM8DydZe5XDHygeyG1mMCwHkGP-F4",
-        },
-      };
       let data = {
         author: 1,
         title: this.title,
         deadline_time:
-          "2020-" + this.month + "-" + this.date + "T11:15:00+09:00",
+          "2020-" + this.month + "-" + this.day + "T11:15:00+09:00",
       };
-      axios.post(url, data, config).then((response) => {
-        console.log(response);
-      });
+      actions.postTodo(data);
       this.$emit("notificationPost");
     },
   },

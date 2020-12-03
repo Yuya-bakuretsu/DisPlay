@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="optionWrapper">
     <header>
       <router-link to="/">
         <img src="../assets/img/arrow.svg" class="arrow" alt="arrow" />

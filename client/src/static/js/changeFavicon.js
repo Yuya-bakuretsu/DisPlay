@@ -38,7 +38,7 @@ const changeFavicon = function () {
     for (let i = 0; i < links.length; i++) {
       let link = links[i];
       if (link.type == "image/png" && link.rel == relValue) {
-        this.docHead.removeChild(link);
+        docHead.removeChild(link);
         return;
       }
     }

@@ -108,8 +108,8 @@ const createDropShadow = function () {
 
 // create groove
 const createGroove = function () {
-  let w = 307,
-    h = 307;
+  let w = 307;
+  let h = 307;
   let outerRadius = w / 2 - 30;
   let innerRadius = outerRadius - 60;
   let arcBackground = d3
@@ -171,8 +171,8 @@ const createClock = function () {
 
 // create task
 const createTask = function (startTime, endTime, code, id) {
-  let w = 307,
-    h = 307;
+  let w = 307;
+  let h = 307;
   let outerRadius = w / 2 - 30;
   let innerRadius = outerRadius - 60;
   let arcForeground = d3

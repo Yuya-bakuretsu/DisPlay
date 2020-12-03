@@ -3,8 +3,8 @@ const d3 = require("d3");
 
 //create canvas
 const svg = function () {
-  let w = 46;
-  let h = 556;
+  const w = 46;
+  const h = 556;
   d3.selectAll("#CustomTable")
     .append("svg")
     .attr("width", w)
@@ -14,9 +14,9 @@ const svg = function () {
 
 // create gradient
 const createGradient = function (color, color1, id) {
-  let defs = d3.select("g").append("defs");
+  const defs = d3.select("g").append("defs");
 
-  let gradient = defs
+  const gradient = defs
     .append("linearGradient")
     .attr("id", id)
     .attr("x1", "0%")
@@ -46,7 +46,7 @@ const base = function () {
     .style("fill", "url(#baseGradient)")
     .attr("rx", 7)
     .attr("ry", 7);
-  let WeekDays = [
+  const WeekDays = [
     { name: "Sunday", initial: "S", x: "17.5" },
     { name: "Monday", initial: "M", x: "15.5" },
     { name: "Tuesday", initial: "T", x: "17.5" },
@@ -64,28 +64,19 @@ const base = function () {
       .style("fill", "#A0A0A0")
       .attr("x", WeekDays[i].x)
       .attr("y", 20);
-    // console.log("#CustomTable:nth-child("+ id + ")")
   }
 };
 // create custom
 const custom = function (number, startTime, endTime, name, gradientId) {
-  let depictionStartTime;
-  if (startTime[0] > endTime[0]) {
-    depictionStartTime = startTime[0];
-    startTime[0] = 0;
-  } else {
-    depictionStartTime = startTime[0];
-  }
-  let calStartTime = Number(startTime[0]) + Number(startTime[1] / 60);
-  let calEndTime = Number(endTime[0]) + Number(endTime[1] / 60);
-  let height = (calEndTime - calStartTime) * 22;
-  let startHeight = calStartTime * 22 + 28;
-  let startTextHeight = startHeight + 13;
-  if (height < 22) {
-    startTextHeight = startHeight + 8.5;
-  }
-  // console.log("calStartTime is " + calStartTime);
-  // console.log("calEndTime is " + calEndTime);
+
+  const depictionStartTime = startTime[0];
+  startTime[0] = startTime[0] > endTime[0] ? (startTime[0] = 0) : startTime[0];
+  const calStartTime = Number(startTime[0]) + Number(startTime[1] / 60);
+  const calEndTime = Number(endTime[0]) + Number(endTime[1] / 60);
+  const height = (calEndTime - calStartTime) * 22;
+  const startHeight = calStartTime * 22 + 28;
+  const startTextHeight = height < 22 ? startHeight + 8.5 : startHeight + 13;
+
   d3.select("#CustomTable:nth-child(" + number + ")")
     .select("g")
     .append("rect")
@@ -97,9 +88,7 @@ const custom = function (number, startTime, endTime, name, gradientId) {
     .attr("rx", "3")
     .attr("ry", "3");
 
-  if (name.length > 6) {
-    name  = name.substring(0, 5) + "…";
-  }
+  name = name.length > 6 ? name.substring(0, 5) + "…" : name;
   if (height >= 11) {
     d3.select("#CustomTable:nth-child(" + number + ")")
       .select("g")
