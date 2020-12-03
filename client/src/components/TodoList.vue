@@ -1,9 +1,12 @@
 <template>
   <div>
     <transition>
+      <TodoPut v-if="todoPutView" @childEvent="todoPutView = false" />
+    </transition>
+    <transition>
       <TodoAdd
         v-if="todoAddView"
-        @childEvent="todoAddViewEvent"
+        @childEvent="todoAddView = false"
         @notificationPost="reGetTodo"
       />
     </transition>
@@ -12,7 +15,7 @@
         <h3>Todolist</h3>
       </div>
       <div class="Menu_left">
-        <button class="Landscape_button" @click="todoAddViewChange">
+        <button class="Landscape_button" @click="todoAddView = true">
           <div class="button_text">Add</div></button
         ><img
           class="Trashcan"
@@ -24,7 +27,7 @@
     <div class="Task_list">
       <div class="Task" v-for="todo in todos" :key="todo.id">
         <h4 class="Task_title">{{ todo.title }}</h4>
-        <button class="Circle_button Play">
+        <button class="Circle_button Play" @click="todoPutView = true">
           <img
             class="Play_img"
             src="../assets/img/Play.svg"
@@ -38,20 +41,22 @@
     </div>
   </div>
 </template>
-<style src="../static/css/TodoList.css"></style>
+<style scoped src="../static/css/TodoList.css"></style>
 
 <script>
 /* eslint-disable */
 import axios from "axios";
 import TodoAdd from "./TodoAdd";
+import TodoPut from "./TodoPut";
 import { store, actions } from "../store/store";
 
 export default {
   name: "TodoList",
-  components: { TodoAdd },
+  components: { TodoAdd, TodoPut },
   data: function () {
     return {
       todoAddView: false,
+      todoPutView: false,
     };
   },
   computed: {
@@ -64,20 +69,14 @@ export default {
     actions.getTodo();
   },
   methods: {
-    todoAddViewChange() {
-      this.todoAddView = true;
-    },
-    todoAddViewEvent(value) {
-      this.todoAddView = value;
-    },
     reGetTodo() {
       actions.getTodo();
       this.todoAddView = false;
     },
-    deleteTodo(id){
+    deleteTodo(id) {
       actions.deleteTodo(id);
       actions.getTodo();
-    }
+    },
   },
 };
 </script>

@@ -5,7 +5,7 @@ import axios from "axios";
 let config = {
   headers: {
     Authorization:
-      "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2OTg0NDU2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjg5ODA1Nn0.meTh4-bDYqUsyx_tzrcTX5fSAyuosJGk7jf_DWU6_Xc",
+      "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA3MDgzOTgxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjk5NzU4MX0.KnYokzjS9o7N-EyzU9tz72Rt_shy40fO9_Lox_5cX4o",
   },
 };
 

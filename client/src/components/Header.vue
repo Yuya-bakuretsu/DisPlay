@@ -8,7 +8,7 @@
     </div>
   </div>
 </template>
-<style src="../static/css/Header.css"></style>
+<style scoped src="../static/css/Header.css"></style>
 <script>
 export default {
   name: "Header",

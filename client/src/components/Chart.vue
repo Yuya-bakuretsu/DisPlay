@@ -4,13 +4,13 @@
     <transition>
       <ScheduleDetail
         v-if="scheduleDetailView"
-        @childEvent="scheduleDetailViewEvent"
+        @childEvent="scheduleDetailView = false"
         :task="task"
       />
     </transition>
   </div>
 </template>
-<style src="../static/css/Chart.css"></style>
+<style scoped src="../static/css/Chart.css"></style>
 <script>
 /* eslint-disable */
 import * as d3 from "d3";
@@ -98,11 +98,6 @@ export default {
         }
       }
       changeFavicon();
-    },
-  },
-  methods: {
-    scheduleDetailViewEvent(value) {
-      this.scheduleDetailView = value;
     },
   },
 };

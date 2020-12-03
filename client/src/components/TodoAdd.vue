@@ -22,7 +22,7 @@
           type="text"
           v-model="title"
           placeholder="enter title"
-          :style="{ width: inputWidth }"
+          :style="{ width: inputTitleWidth }"
         />
         <img src="../assets/img/Pen.svg" alt="pen" class="Pen" />
       </div>
@@ -51,7 +51,7 @@
     </div>
   </div>
 </template>
-<style src="../static/css/TodoAdd.css"></style>
+<style scoped src="../static/css/TodoAdd.css"></style>
 <script>
 import { actions } from "../store/store";
 
@@ -68,18 +68,18 @@ export default {
     };
   },
   computed: {
-    inputWidth() {
+    inputTitleWidth() {
       let width = this.title.length * 10.4;
       if (width <= 88) {
         width = 88;
       }
-      let inputWidth = width + "px";
-      return inputWidth;
+      let inputTitleWidth = width + "px";
+      return inputTitleWidth;
     },
   },
   methods: {
     sendTodoAddView() {
-      this.$emit("childEvent", false);
+      this.$emit("childEvent");
     },
     postTodo() {
       let data = {

@@ -22,7 +22,7 @@
 }
 .Task {
   display: flex;
-  margin: 0 0 0 38px;
+  margin: 25px 0 0 38px;
   justify-content: left;
   flex-wrap: wrap;
 }
@@ -39,28 +39,4 @@ button.Check {
 p.Task_deadline {
   margin: -8px 0 0 3px;
   text-align: left;
-}
-/* TodoAdd animation */
-.v-enter {
-  opacity: 0;
-}
-
-.v-enter-to {
-  opacity: 1;
-}
-
-.v-enter-active {
-  transition: all 250ms;
-}
-
-.v-leave {
-  opacity: 1;
-}
-
-.v-leave-to {
-  opacity: 0;
-}
-
-.v-leave-active {
-  transition: all 250ms;
 }
