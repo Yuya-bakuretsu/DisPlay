@@ -35,14 +35,14 @@
     </div> -->
   </div>
 </template>
-<style src="../static/css/scheduleDetail.css"></style>
+<style scoped src="../static/css/scheduleDetail.css"></style>
 <script>
 export default {
   name: "ScheduleDetail",
   props: ["task"],
   methods: {
     sendScheduleDetailView() {
-      this.$emit("childEvent", false);
+      this.$emit("childEvent");
     },
   },
 };

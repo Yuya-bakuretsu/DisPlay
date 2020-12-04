@@ -11,7 +11,7 @@
     </div>
   </div>
 </template>
-<style>
+<style scoped>
 .CustomTables {
   display: flex;
   justify-content: center;
@@ -25,28 +25,17 @@
 /* eslint-disable */
 import depiction from "../static/js/depictionCustomTable";
 import gradients from "../assets/gradients";
-import axios from "axios";
+import { store, actions } from "../store/store";
 
 export default {
   name: "CustomTable",
-  data: function () {
-    return {
-      customs: [],
-    };
-  },
-  created() {
-    let url = "http://127.0.0.1:8000/api/customs";
-    let config = {
-      headers: {
-        Authorization:
-          "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA2OTg0NDU2LCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjg5ODA1Nn0.meTh4-bDYqUsyx_tzrcTX5fSAyuosJGk7jf_DWU6_Xc",
-      },
-    };
-    axios.get(url, config).then((response) => {
-      this.customs = response.data;
-    });
+  computed: {
+    customs() {
+      return store.customs;
+    },
   },
   mounted() {
+    actions.getCustoms();
     depiction.svg();
     depiction.createGradient("#FFFFFF", "#F8F8F8", "baseGradient");
     depiction.base();
