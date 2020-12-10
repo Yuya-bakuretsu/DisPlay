@@ -7,9 +7,10 @@
     -1.5px -1.5px 3px rgba(248, 253, 255, 0.9);
   border-radius: 14px;
   width: 351px;
-  height: 210px;
+  height: 280px;
 }
 img.X {
+  cursor: pointer;
   margin: 17px 28px 0 0;
 }
 .detailHeader {
@@ -31,9 +32,8 @@ img.putStick{
   height: 1px;
   width: 87px;
 }
-.field h2 {
+.timePicker {
   margin: 11px 0 0 0;
-  text-align: left;
 }
 .field{
   margin: 0 0 0 28px;
@@ -42,6 +42,7 @@ img.putStick{
   display: flex;
 }
 .editText {
+  cursor: pointer;
   text-align: right;
   margin: 24px 16px 0 0;
   font-family: "Roboto", sans-serif;

@@ -55,6 +55,7 @@ img.stick.first{
   display: flex;
 }
 .editText {
+  cursor: pointer;
   text-align: right;
   margin: 24px 16px 0 0;
   font-family: "Roboto", sans-serif;
@@ -64,6 +65,7 @@ img.stick.first{
   font-size: 15px;
 }
 img.X {
+  cursor: pointer;
   margin: 0 28px 0 0;
 }
 
@@ -102,4 +104,10 @@ img.Pen{
 
 .v-leave-active {
   transition: all 250ms;
+}
+/* delete input allows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

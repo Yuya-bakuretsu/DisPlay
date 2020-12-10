@@ -2,9 +2,9 @@
   <div class="TodoPut">
     <div class="wrap">
       <div class="detailHeader">
-          <h2 class="putCaption">Add schedule</h2>
+        <h2 class="putCaption">Add schedule</h2>
         <div class="link">
-          <div class="editText">Add</div>
+          <div class="editText" @click="todoPut">Add</div>
           <img
             src="../assets/img/X.svg"
             alt="X"
@@ -13,24 +13,59 @@
           />
         </div>
       </div>
-    <div class="wrap">
-      <h3 class="putCaptionText">Date</h3>
-      <img src="../assets/img/stick.svg" class="putStick" alt="stick" />
-      <div class="field">
-        <h2 class="dateText">11:25~14:00</h2>
+      <div class="wrap">
+        <h3 class="putCaptionText">Date</h3>
+        <img src="../assets/img/stick.svg" class="putStick" alt="stick" />
+        <div class="field">
+          <div class="timePicker">
+            <vue-clock-picker
+              mode="24"
+              :defaultHour="hour"
+              :defaultMinute="minute"
+              :onTimeChange="timeChangeHandler"
+            />
+            <vue-clock-picker
+              mode="24"
+              :defaultHour="hour2"
+              :defaultMinute="minute2"
+              :onTimeChange="timeChangeHandler2"
+              :style="{ marginTop: 10 + 'px' }"
+            />
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 <style scoped src="../static/css/TodoPut.css"></style>
 <script>
+import VueClockPicker from "vue-clock-picker";
 export default {
   name: "TodoPut",
-    methods: {
+  components: {
+    VueClockPicker,
+  },
+  data() {
+    return {
+      hour: new Date().getHours(),
+      minute: new Date().getMinutes(),
+      hour2: new Date().getHours() + 1,
+      minute2: new Date().getMinutes(),
+    };
+  },
+  methods: {
     sendTodoPutView() {
       this.$emit("childEvent");
     },
+    timeChangeHandler(e) {
+      this.hour = e.hour;
+      this.minute = e.minute;
+    },
+    timeChangeHandler2(e) {
+      this.hour2 = e.hour;
+      this.minute2 = e.minute;
+    },
+    todoPut() {},
   },
-}
+};
 </script>

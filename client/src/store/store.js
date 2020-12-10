@@ -5,7 +5,7 @@ import axios from "axios";
 let config = {
   headers: {
     Authorization:
-      "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA3MDgzOTgxLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNjk5NzU4MX0.KnYokzjS9o7N-EyzU9tz72Rt_shy40fO9_Lox_5cX4o",
+      "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA3MjMxMDAwLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNzE0NDYwMH0.sEMWhVh8jFvxdUA-i5CJekgCIo1zvYiqwtysVTngGgk",
   },
 };
 
@@ -31,14 +31,20 @@ const actions = {
   postTodo(data) {
     let url = "http://127.0.0.1:8000/api/todo/";
     axios.post(url, data, config).then((response) => {
-      console.log(response); 
+      console.log(response);
     });
   },
-  deleteTodo(id){
+  putTodo(id) {
     let url = "http://127.0.0.1:8000/api/todo/" + id;
-    axios.delete(url,config).then((response)=>{
-      console.log(response)
-    })
+    axios.put(url, data, config).then((response) => {
+      console.log(response);
+    });
+  },
+  deleteTodo(id) {
+    let url = "http://127.0.0.1:8000/api/todo/" + id;
+    axios.delete(url, config).then((response) => {
+      console.log(response);
+    });
   },
   getCustoms() {
     let url = "http://127.0.0.1:8000/api/customs";
