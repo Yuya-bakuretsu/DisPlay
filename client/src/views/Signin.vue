@@ -10,13 +10,15 @@
         placeholder="Username"
       />
       <div class="inputLine"></div>
-            <input
+      <input
         class="passwordInputArea"
         type="password"
         v-model="Password"
         placeholder="Password"
       />
       <div class="inputLine"></div>
+      <button class="LandscapeButton Login">Login</button>
+      <h4 class="signinCaption">Don't have account? <a>Sing up now</a></h4>
     </div>
   </div>
 </template>
@@ -24,11 +26,11 @@
 <script>
 export default {
   name: "Signin",
-  data: function(){
-    return{
-      Username:"",
-      Password:"",
-    }
-  }
+  data: function () {
+    return {
+      Username: "",
+      Password: "",
+    };
+  },
 };
 </script>
