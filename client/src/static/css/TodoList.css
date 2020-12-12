@@ -1,23 +1,23 @@
-.Todo_menu {
+.TodoMenu {
   display: flex;
   margin: 70px 0 25px 0;
   justify-content: space-between;
 }
-.Menu_right {
+.MenuRight {
   margin-left: 38px;
 }
-.Menu_left {
+.MenuLeft {
   display: flex;
   margin-right: 38px;
   align-items: flex-start;
 }
-.Menu_left .Landscape_button {
+.MenuLeft .LandscapeButton {
   margin-right: 12px;
 }
-.Menu_left img {
+.MenuLeft img {
   margin-top: 1px;
 }
-.Task_list {
+.TaskList {
   margin: 6px 0 0 2px;
 }
 .Task {
@@ -26,7 +26,7 @@
   justify-content: left;
   flex-wrap: wrap;
 }
-h4.Task_title {
+h4.TaskTitle {
   width: 163px;
   text-align: left;
 }
@@ -36,7 +36,7 @@ button.Play {
 button.Check {
   margin: 0 0 0 15px;
 }
-p.Task_deadline {
+p.TaskDeadline {
   margin: -8px 0 0 3px;
   text-align: left;
 }

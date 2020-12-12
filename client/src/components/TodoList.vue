@@ -10,13 +10,13 @@
         @notificationPost="reGetTodo"
       />
     </transition>
-    <div class="Todo_menu">
-      <div class="Menu_right">
+    <div class="TodoMenu">
+      <div class="MenuRight">
         <h3>Todolist</h3>
       </div>
-      <div class="Menu_left">
-        <button class="Landscape_button" @click="todoAddView = true">
-          <div class="button_text">Add</div></button
+      <div class="MenuLeft">
+        <button class="LandscapeButton" @click="todoAddView = true">
+          <div class="buttonText">Add</div></button
         ><img
           class="Trashcan"
           src="../assets/img/Trashcan.svg"
@@ -24,19 +24,19 @@
         />
       </div>
     </div>
-    <div class="Task_list">
+    <div class="TaskList">
       <div class="Task" v-for="todo in todos" :key="todo.id">
-        <h4 class="Task_title">{{ todo.title }}</h4>
-        <button class="Circle_button Play" @click="todoPutView = true">
+        <h4 class="TaskTitle">{{ todo.title }}</h4>
+        <button class="CircleButton Play" @click="todoPutView = true">
           <img
-            class="Play_img"
+            class="PlayImg"
             src="../assets/img/Play.svg"
             alt="Play"
           /></button
-        ><button class="Circle_button Check" @click="deleteTodo(todo.id)">
+        ><button class="CircleButton Check" @click="deleteTodo(todo.id)">
           <img src="../assets/img/Check.svg" alt="check" />
         </button>
-        <p class="Task_deadline">Deadline {{ todo.displayDate }}</p>
+        <p class="TaskDeadline">Deadline {{ todo.displayDate }}</p>
       </div>
     </div>
   </div>
