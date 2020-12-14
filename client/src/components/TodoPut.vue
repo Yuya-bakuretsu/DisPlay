@@ -40,6 +40,8 @@
 <style scoped src="../static/css/TodoPut.css"></style>
 <script>
 import VueClockPicker from "vue-clock-picker";
+import store from "../store/store";
+
 export default {
   name: "TodoPut",
   components: {
@@ -52,6 +54,11 @@ export default {
       // hour2: new Date().getHours() + 1,
       // minute2: new Date().getMinutes(),
     };
+  },
+  computed: {
+    token() {
+      return store.token;
+    },
   },
   methods: {
     sendTodoPutView() {

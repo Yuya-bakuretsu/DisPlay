@@ -2,55 +2,94 @@
 import Vue from "vue";
 import axios from "axios";
 
-let config = {
-  headers: {
-    Authorization:
-      "jwt eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlJhaWthIiwiZXhwIjoxNjA3NzQ1NDIyLCJlbWFpbCI6InJhaWthNDc4OUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYwNzY1OTAyMn0.SZCrIs7T8FLjotzYJwYocBJPLsssoapLe-LjvUVdfVA",
-  },
-};
-
-const store = Vue.observable({ customs: {}, todos: {} });
+const store = Vue.observable({ customs: {}, todos: {}, token: {} });
 
 const actions = {
-  getTodo() {
-    let url = "http://127.0.0.1:8000/api/todo";
+  getTodo(token) {
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    const url = "http://127.0.0.1:8000/api/todo/";
     axios.get(url, config).then((response) => {
       // arrange todos data
       let data;
       for (let i = 0; i < response.data.length; i++) {
         data = response.data;
-        let splitDate = data[i].d_date.split("-");
-        let month = Number(splitDate[1]);
-        let day = Number(splitDate[2]);
+        const splitDate = data[i].d_date.split("-");
+        const month = Number(splitDate[1]);
+        const day = Number(splitDate[2]);
 
         data[i].displayDate = month + "/" + day;
       }
       store.todos = data;
     });
   },
-  postTodo(data) {
-    let url = "http://127.0.0.1:8000/api/todo/";
+  postTodo(data, token) {
+    const url = "http://127.0.0.1:8000/api/todo/";
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
     axios.post(url, data, config).then((response) => {
       console.log(response);
     });
   },
-  putTodo(id) {
-    let url = "http://127.0.0.1:8000/api/todo/" + id;
+  putTodo(id, token) {
+    const url = "http://127.0.0.1:8000/api/todo/" + id;
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
     axios.put(url, data, config).then((response) => {
       console.log(response);
     });
   },
-  deleteTodo(id) {
-    let url = "http://127.0.0.1:8000/api/todo/" + id;
-    axios.delete(url, config).then((response) => {
+  deconsteTodo(id, token) {
+    const url = "http://127.0.0.1:8000/api/todo/" + id;
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    axios.deconste(url, config).then((response) => {
       console.log(response);
     });
   },
-  getCustoms() {
-    let url = "http://127.0.0.1:8000/api/customs";
+  getCustoms(token) {
+    const url = "http://127.0.0.1:8000/api/customs/";
+    const config = {
+      headers: {
+        Authorization: token,
+      },
+    };
+    console.log(config);
     axios.get(url, config).then((response) => {
       store.customs = response.data;
     });
+  },
+  postAuth(username,password) {
+    let data = {
+      "username":username,
+      "password":password
+    };
+    const url = "http://127.0.0.1:8000/auth/";
+    axios.post(url, data).then((response) => {
+      console.log(response);
+    });
+  },
+  updateToken() {
+    //TODO domainオプションとhttpsオプションを追加する
+    if (document.cookie) {
+      const tokenValue = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("token"))
+        .split("=")[1];
+      store.token = "jwt " + tokenValue;
+    }
   },
 };
 

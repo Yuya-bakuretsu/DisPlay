@@ -53,7 +53,7 @@
 </template>
 <style scoped src="../static/css/TodoAdd.css"></style>
 <script>
-import { actions } from "../store/store";
+import { store,actions } from "../store/store";
 
 export default {
   name: "TodoAdd",
@@ -76,6 +76,9 @@ export default {
       let inputTitleWidth = width + "px";
       return inputTitleWidth;
     },
+    token() {
+      return store.token;
+    },
   },
   methods: {
     sendTodoAddView() {
@@ -88,7 +91,7 @@ export default {
         deadline_time:
           "2020-" + this.month + "-" + this.day + "T11:15:00+09:00",
       };
-      actions.postTodo(data);
+      actions.postTodo(data,this.token);
       this.$emit("notificationPost");
     },
   },

@@ -63,19 +63,22 @@ export default {
     todos() {
       return store.todos;
     },
+    token(){
+      return store.token
+  },
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
   mounted() {
-    actions.getTodo();
+    actions.getTodo(this.token);
   },
   methods: {
     reGetTodo() {
-      actions.getTodo();
+      actions.getTodo(this.token);
       this.todoAddView = false;
     },
     deleteTodo(id) {
-      actions.deleteTodo(id);
-      actions.getTodo();
+      actions.deleteTodo(id,this.token);
+      actions.getTodo(this.token);
     },
   },
 };

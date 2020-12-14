@@ -35,6 +35,9 @@ export default {
     customs() {
       return store.customs;
     },
+    token() {
+      return store.token;
+    },
   },
   //TODO 401errorが出るたびにtokenを取得し直す機能を追加
   mounted() {
@@ -44,7 +47,7 @@ export default {
     depiction.createDropShadow();
     depiction.createGroove();
     depiction.createClock();
-    actions.getCustoms();
+    actions.getCustoms(this.token);
   },
   watch: {
     customs: function () {
