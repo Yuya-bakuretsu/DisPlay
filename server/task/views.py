@@ -11,10 +11,6 @@ class UserList(generics.ListAPIView):
     serializer_class = UserSerializer
     permission_classed = (permissions.IsAuthenticated, )
 
-    def get_queryset(self):
-        user = self.request.user
-        return Todo.objects.filter(author=user)
-
 
 class UserCreate(generics.CreateAPIView):
     """View to create a new user. Only accepts POST requests """
@@ -39,7 +35,7 @@ class CustomListCreate(generics.ListCreateAPIView):
 
     def get_queryset(self):
         user = self.request.user
-        return Todo.objects.filter(author=user)
+        return Custom.objects.filter(author=user)
 
 
 class CustomRetrieveUpdate(generics.RetrieveUpdateDestroyAPIView):
