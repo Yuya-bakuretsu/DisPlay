@@ -66,20 +66,28 @@ const actions = {
         Authorization: token,
       },
     };
-    console.log(config);
     axios.get(url, config).then((response) => {
       store.customs = response.data;
     });
   },
-  postAuth(username,password) {
+  postAuth(username, password, routeIf) {
     let data = {
-      "username":username,
-      "password":password
+      username: username,
+      password: password,
     };
     const url = "http://127.0.0.1:8000/auth/";
-    axios.post(url, data).then((response) => {
-      console.log(response);
-    });
+
+    axios
+      .post(url, data)
+      .then((response) => {
+        document.cookie = "token=" + response.data.token + ";max-age:86000";
+        store.token = "jwt " + response.data.token;
+      })
+      .then(function () {
+        if (routeIf) {
+          routeIf.$router.push("/");
+        }
+      });
   },
   updateToken() {
     //TODO domainオプションとhttpsオプションを追加する
@@ -90,6 +98,7 @@ const actions = {
         .split("=")[1];
       store.token = "jwt " + tokenValue;
     }
+    console.log("token is already updated");
   },
 };
 

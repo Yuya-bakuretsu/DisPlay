@@ -30,7 +30,7 @@
 </template>
 <style scoped src="../static/css/Signin.css"></style>
 <script>
-import { store,actions } from "../store/store";
+import { store, actions } from "../store/store";
 
 export default {
   name: "Signin",
@@ -41,21 +41,16 @@ export default {
     };
   },
   computed: {
-    token(){
-      return store.token
-    }
+    token() {
+      return store.token;
+    },
   },
   created() {
     actions.updateToken();
-    console.log(this.token);
   },
   methods: {
     sendSignIn() {
-      console.log("test")
-      actions.postAuth(this.Username,this.Password);
-      actions.updateToken();
-      console.log(this.token);
-      this.$router.push('/')
+      actions.postAuth(this.Username, this.Password, this);
     },
   },
 };
