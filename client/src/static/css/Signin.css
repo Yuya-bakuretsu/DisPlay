@@ -21,6 +21,20 @@ h1.signinTitle {
   border-radius: 16px;
   margin: 115px auto 0 auto;
 }
+.signinForm.err{
+  margin-top: 80px;
+  height: 390px;
+}
+.errText{
+  margin: 20px 0 0 29px;
+  text-align: left;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: #FA7070;
+}
+.errText .resetLink{
+  font-size: 12px;
+}
 input {
   font-size: 15px;
   width: 300px;
@@ -29,6 +43,9 @@ input {
 }
 .usernameInputArea {
   margin: 40px 0 0 0;
+}
+.usernameInputArea.err{
+  margin: 25px 0 0 0;
 }
 .inputLine {
   width: 300px;

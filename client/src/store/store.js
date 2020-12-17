@@ -70,7 +70,7 @@ const actions = {
       store.customs = response.data;
     });
   },
-  postAuth(username, password, routeIf) {
+  postAuth(username, password, _this) {
     let data = {
       username: username,
       password: password,
@@ -84,9 +84,11 @@ const actions = {
         store.token = "jwt " + response.data.token;
       })
       .then(function () {
-        if (routeIf) {
-          routeIf.$router.push("/");
-        }
+          _this.$router.push("/");
+      })
+      .catch(function (error) {
+        _this.err = true;
+        console.log(error);
       });
   },
   updateToken() {

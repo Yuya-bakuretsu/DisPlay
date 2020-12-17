@@ -1,10 +1,14 @@
 <template>
   <div>
     <h1 class="DisPlayTitle">DisPlay</h1>
-    <div class="signinForm">
+    <div class="signinForm" :class="{ err: err }">
       <h1 class="signinTitle">Sign in</h1>
+      <h4 class="errText" v-if="err">
+        You may mistake Username or Password.<br> <a class="resetLink">Reset Password Link</a>
+      </h4>
       <input
         class="usernameInputArea"
+        :class="{ err: err }"
         type="text"
         v-model="Username"
         placeholder="Username"
@@ -24,7 +28,7 @@
         <div class="inputLine" />
       </label>
       <button class="LandscapeButton Login" @click="sendSignIn">Login</button>
-      <h4 class="signinCaption">Don't have account?<a> Sing up now</a></h4>
+      <h4 class="signinCaption">Don't have account? <a>Sign up now</a></h4>
     </div>
   </div>
 </template>
@@ -38,6 +42,7 @@ export default {
     return {
       Username: "",
       Password: "",
+      err: false,
     };
   },
   computed: {

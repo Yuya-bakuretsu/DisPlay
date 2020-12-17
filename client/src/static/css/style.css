@@ -35,6 +35,11 @@ p {
   letter-spacing: 0.15em;
   color: #646464;
 }
+a{
+  color: #6AB2FA !important;
+  text-decoration: underline;
+  text-underline-offset: 2.4px;
+}
 .LandscapeButton {
   width: 55px;
   height: 18px;
