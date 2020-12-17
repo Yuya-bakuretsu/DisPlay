@@ -35,7 +35,12 @@ p {
   letter-spacing: 0.15em;
   color: #646464;
 }
-.Landscape_button {
+a{
+  color: #6AB2FA !important;
+  text-decoration: underline;
+  text-underline-offset: 2.4px;
+}
+.LandscapeButton {
   width: 55px;
   height: 18px;
   font-size: 8px;
@@ -59,7 +64,7 @@ button:active {
     inset 1px 1.5px 3px rgba(0, 0, 0, 0.1),
     inset -1px -1.5px 3px rgba(248, 253, 255, 0.9);
 }
-.Login.Landscape_button {
+.Login.LandscapeButton {
   background: linear-gradient(45deg, #65b2ff, #5f9be0);
   width: 103px;
   height: 29px;
@@ -72,7 +77,7 @@ button:active.Login {
     inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     inset -1.5px -1.5px 3px rgba(149, 205, 250, 0.6);
 }
-.Logout.Landscape_button {
+.Logout.LandscapeButton {
   font-weight: 400;
   background: linear-gradient(15deg, #ff6262, #fa5e5e);
   width: 103px;
@@ -85,13 +90,19 @@ button:active.Logout {
     inset 1.5px 1.5px 3px rgba(0, 0, 0, 0.2),
     inset -1.5px -1.5px 3px rgba(255, 179, 171, 0.6);
 }
-.Circle_button {
+.CircleButton {
   background: linear-gradient(15deg, #fdfdfd, #f7f7f7);
   width: 29px;
   height: 29px;
   border-radius: 50%;
   box-shadow: 1.5px 1.5px 3px 0px rgb(0, 0, 0, 0.16);
 }
-.Play_img {
+.PlayImg {
   margin: 0 0 0 2.5px;
+}
+button:focus {
+	outline:0;
+}
+input:focus {
+  outline: 0;
 }

@@ -8,16 +8,16 @@
     </header>
     <div class="customOptionHeader">
       <h3 class="customOptionTitle">Custom</h3>
-      <button class="Landscape_button Resseting_button">Resseting</button>
+      <button class="LandscapeButton RessetingButton">Resseting</button>
     </div>
     <CustomTable />
     <div class="logoutSection">
       <h3 class="logoutTitle">Logout</h3>
-      <button class="Logout Landscape_button">Logout</button>
+      <button class="Logout LandscapeButton">Logout</button>
     </div>
   </div>
 </template>
-<style src="../static/css/Option.css"></style>
+<style scoped src="../static/css/Option.css"></style>
 <script>
 import CustomTable from "../components/CustomTable";
 export default {

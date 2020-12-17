@@ -22,7 +22,7 @@ h3.customOptionTitle{
   text-align: left;
   margin: 0 0 0 20px;
 }
-button.Landscape_button.Resseting_button{
+button.LandscapeButton.RessetingButton{
   width: 85px;
   height: 20px;
   margin: 2px 15px 0 0;
@@ -36,7 +36,7 @@ h3.logoutTitle{
   text-align: left;
   margin: 0 0 0 20px;
 }
-.Logout.Landscape_button {
+.Logout.LandscapeButton {
   display: block;
   margin: 15px auto 0 17px;
 }

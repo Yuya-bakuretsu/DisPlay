@@ -24,13 +24,13 @@
               :defaultMinute="minute"
               :onTimeChange="timeChangeHandler"
             />
-            <vue-clock-picker
+            <!-- <vue-clock-picker
               mode="24"
               :defaultHour="hour2"
               :defaultMinute="minute2"
               :onTimeChange="timeChangeHandler2"
               :style="{ marginTop: 10 + 'px' }"
-            />
+            /> -->
           </div>
         </div>
       </div>
@@ -40,6 +40,8 @@
 <style scoped src="../static/css/TodoPut.css"></style>
 <script>
 import VueClockPicker from "vue-clock-picker";
+import store from "../store/store";
+
 export default {
   name: "TodoPut",
   components: {
@@ -49,9 +51,14 @@ export default {
     return {
       hour: new Date().getHours(),
       minute: new Date().getMinutes(),
-      hour2: new Date().getHours() + 1,
-      minute2: new Date().getMinutes(),
+      // hour2: new Date().getHours() + 1,
+      // minute2: new Date().getMinutes(),
     };
+  },
+  computed: {
+    token() {
+      return store.token;
+    },
   },
   methods: {
     sendTodoPutView() {
@@ -61,11 +68,11 @@ export default {
       this.hour = e.hour;
       this.minute = e.minute;
     },
-    timeChangeHandler2(e) {
-      this.hour2 = e.hour;
-      this.minute2 = e.minute;
-    },
-    todoPut() {},
+    // timeChangeHandler2(e) {
+    //   this.hour2 = e.hour;
+    //   this.minute2 = e.minute;
+    // },
+    // todoPut() {},
   },
 };
 </script>
